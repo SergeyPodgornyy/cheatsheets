@@ -153,5 +153,5 @@ Using `assert` for user input validation or critical checks is **dangerous** and
 <!-- nav -->
 ---
 
-← [Python — Operators](02-operators.md) · [Index](../README.md) · [Python — Comprehension and Unpacking](04-comprehension.md) →
+← [Python — Operators](02-operators.md) · [Index](README.md) · [Python — Comprehension and Unpacking](04-comprehension.md) →
 <!-- nav -->

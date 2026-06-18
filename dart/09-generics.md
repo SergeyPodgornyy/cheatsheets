@@ -86,5 +86,5 @@ print(names is List<String>);   // true — the element type survives at runtime
 <!-- nav -->
 ---
 
-← [Dart — Inheritance, Mixins & Enums](08-inheritance-mixins.md) · [Index](../README.md) · [Dart — Error Handling](10-error-handling.md) →
+← [Dart — Inheritance, Mixins & Enums](08-inheritance-mixins.md) · [Index](README.md) · [Dart — Error Handling](10-error-handling.md) →
 <!-- nav -->

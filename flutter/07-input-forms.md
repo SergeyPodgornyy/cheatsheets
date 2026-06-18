@@ -120,5 +120,5 @@ GestureDetector(
 <!-- nav -->
 ---
 
-← [Flutter — Lists & Scrolling](06-lists-scrolling.md) · [Index](../README.md) · [Flutter — Navigation & Routing](08-navigation.md) →
+← [Flutter — Lists & Scrolling](06-lists-scrolling.md) · [Index](README.md) · [Flutter — Navigation & Routing](08-navigation.md) →
 <!-- nav -->

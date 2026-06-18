@@ -136,5 +136,5 @@ showDialog(
 <!-- nav -->
 ---
 
-← [Flutter — Constraints & Sizing](04-constraints.md) · [Index](../README.md) · [Flutter — Lists & Scrolling](06-lists-scrolling.md) →
+← [Flutter — Constraints & Sizing](04-constraints.md) · [Index](README.md) · [Flutter — Lists & Scrolling](06-lists-scrolling.md) →
 <!-- nav -->

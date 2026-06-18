@@ -228,5 +228,5 @@ Hero(tag: 'logo', child: Image.asset('logo.png'));
 <!-- nav -->
 ---
 
-← [Flutter — Networking & Async UI](10-networking-async-ui.md) · [Index](../README.md) · [Flutter — Testing](12-testing.md) →
+← [Flutter — Networking & Async UI](10-networking-async-ui.md) · [Index](README.md) · [Flutter — Testing](12-testing.md) →
 <!-- nav -->

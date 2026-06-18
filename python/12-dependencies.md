@@ -68,5 +68,5 @@ $ mypy main.py
 <!-- nav -->
 ---
 
-← [Python — Exceptions](11-exceptions.md) · [Index](../README.md) · [Dart — Basics](../dart/01-basics.md) →
+← [Python — Exceptions](11-exceptions.md) · [Index](README.md) · [Home](../README.md) →
 <!-- nav -->

@@ -245,5 +245,5 @@ assert(urlString.startsWith('https'), 'URL ($urlString) should start with "https
 <!-- nav -->
 ---
 
-← [Dart — Operators](03-operators.md) · [Index](../README.md) · [Dart — Functions](05-functions.md) →
+← [Dart — Operators](03-operators.md) · [Index](README.md) · [Dart — Functions](05-functions.md) →
 <!-- nav -->

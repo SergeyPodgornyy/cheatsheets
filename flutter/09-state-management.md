@@ -189,5 +189,5 @@ Widget build(BuildContext context) =>
 <!-- nav -->
 ---
 
-← [Flutter — Navigation & Routing](08-navigation.md) · [Index](../README.md) · [Flutter — Networking & Async UI](10-networking-async-ui.md) →
+← [Flutter — Navigation & Routing](08-navigation.md) · [Index](README.md) · [Flutter — Networking & Async UI](10-networking-async-ui.md) →
 <!-- nav -->

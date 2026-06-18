@@ -287,5 +287,5 @@ empty: None = None
 <!-- nav -->
 ---
 
-← [Home](../README.md) · [Index](../README.md) · [Python — Operators](02-operators.md) →
+← [Home](../README.md) · [Index](README.md) · [Python — Operators](02-operators.md) →
 <!-- nav -->

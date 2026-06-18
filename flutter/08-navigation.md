@@ -122,5 +122,5 @@ MaterialApp.router(
 <!-- nav -->
 ---
 
-← [Flutter — Input & Forms](07-input-forms.md) · [Index](../README.md) · [Flutter — State Management](09-state-management.md) →
+← [Flutter — Input & Forms](07-input-forms.md) · [Index](README.md) · [Flutter — State Management](09-state-management.md) →
 <!-- nav -->

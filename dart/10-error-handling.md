@@ -140,5 +140,5 @@ Enabled in Flutter debug mode; ignored in production (e.g. `dart compile exe`, r
 <!-- nav -->
 ---
 
-← [Dart — Generics](09-generics.md) · [Index](../README.md) · [Dart — Async (Future, Stream, Isolate)](11-async.md) →
+← [Dart — Generics](09-generics.md) · [Index](README.md) · [Dart — Async (Future, Stream, Isolate)](11-async.md) →
 <!-- nav -->

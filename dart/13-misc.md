@@ -128,5 +128,5 @@ re.firstMatch('abc123')?.group(1);   // '123'
 <!-- nav -->
 ---
 
-← [Dart — Libraries & Packages](12-libraries-packages.md) · [Index](../README.md) · [Dart — Iterables](14-iterables.md) →
+← [Dart — Libraries & Packages](12-libraries-packages.md) · [Index](README.md) · [Dart — Iterables](14-iterables.md) →
 <!-- nav -->

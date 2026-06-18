@@ -385,5 +385,5 @@ Disallowed: `abstract` + `sealed` (sealed is already abstract); `interface`/`fin
 <!-- nav -->
 ---
 
-← [Dart — Classes](07-classes.md) · [Index](../README.md) · [Dart — Generics](09-generics.md) →
+← [Dart — Classes](07-classes.md) · [Index](README.md) · [Dart — Generics](09-generics.md) →
 <!-- nav -->

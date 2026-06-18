@@ -98,5 +98,5 @@ var result = pipeline.toList();   // NOW it runs
 <!-- nav -->
 ---
 
-← [Dart — Tooling, Metadata & Docs](13-misc.md) · [Index](../README.md) · [Flutter — Basics](../flutter/01-basics.md) →
+← [Dart — Tooling, Metadata & Docs](13-misc.md) · [Index](README.md) · [Home](../README.md) →
 <!-- nav -->

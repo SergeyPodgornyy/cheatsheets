@@ -87,5 +87,5 @@ async def check_status(url: str) -> dict[str, str | int]:
 <!-- nav -->
 ---
 
-← [Python — Generators, Decorators, Memoization](08-gen-decorators.md) · [Index](../README.md) · [Python — OOP](10-oop.md) →
+← [Python — Generators, Decorators, Memoization](08-gen-decorators.md) · [Index](README.md) · [Python — OOP](10-oop.md) →
 <!-- nav -->

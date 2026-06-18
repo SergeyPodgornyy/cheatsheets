@@ -233,5 +233,5 @@ external void someFunc(int i);
 <!-- nav -->
 ---
 
-← [Dart — Control Flow](04-control-flow.md) · [Index](../README.md) · [Dart — Patterns & Destructuring](06-patterns-records.md) →
+← [Dart — Control Flow](04-control-flow.md) · [Index](README.md) · [Dart — Patterns & Destructuring](06-patterns-records.md) →
 <!-- nav -->

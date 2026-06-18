@@ -339,5 +339,5 @@ class EffectiveDoer extends Doer {
 <!-- nav -->
 ---
 
-← [Dart — Patterns & Destructuring](06-patterns-records.md) · [Index](../README.md) · [Dart — Inheritance, Mixins & Enums](08-inheritance-mixins.md) →
+← [Dart — Patterns & Destructuring](06-patterns-records.md) · [Index](README.md) · [Dart — Inheritance, Mixins & Enums](08-inheritance-mixins.md) →
 <!-- nav -->

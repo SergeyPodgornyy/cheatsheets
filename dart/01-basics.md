@@ -153,5 +153,5 @@ void greet() {}
 <!-- nav -->
 ---
 
-← [Python — Dependencies](../python/12-dependencies.md) · [Index](../README.md) · [Dart — Types & Collections](02-types-collections.md) →
+← [Home](../README.md) · [Index](README.md) · [Dart — Types & Collections](02-types-collections.md) →
 <!-- nav -->

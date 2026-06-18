@@ -135,5 +135,5 @@ $ # R  → hot restart  (reloads changes and RESETS state; reruns from scratch)
 <!-- nav -->
 ---
 
-← [Dart — Iterables](../dart/14-iterables.md) · [Index](../README.md) · [Flutter — Widgets & State](02-widgets.md) →
+← [Home](../README.md) · [Index](README.md) · [Flutter — Widgets & State](02-widgets.md) →
 <!-- nav -->

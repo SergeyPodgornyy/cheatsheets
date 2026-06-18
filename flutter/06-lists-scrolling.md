@@ -92,5 +92,5 @@ GridView.count(
 <!-- nav -->
 ---
 
-← [Flutter — Common Widgets](05-common-widgets.md) · [Index](../README.md) · [Flutter — Input & Forms](07-input-forms.md) →
+← [Flutter — Common Widgets](05-common-widgets.md) · [Index](README.md) · [Flutter — Input & Forms](07-input-forms.md) →
 <!-- nav -->

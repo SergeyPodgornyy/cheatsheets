@@ -233,5 +233,5 @@ receivePort.listen((message) { /* results arrive here */ });
 <!-- nav -->
 ---
 
-← [Dart — Error Handling](10-error-handling.md) · [Index](../README.md) · [Dart — Libraries & Packages](12-libraries-packages.md) →
+← [Dart — Error Handling](10-error-handling.md) · [Index](README.md) · [Dart — Libraries & Packages](12-libraries-packages.md) →
 <!-- nav -->

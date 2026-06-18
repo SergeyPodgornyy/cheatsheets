@@ -93,5 +93,5 @@ Text('Hi', style: GoogleFonts.oswald(fontSize: 30));
 <!-- nav -->
 ---
 
-← [Flutter — Responsive & Adaptive Design](15-responsive-adaptive.md) · [Index](../README.md) · [Home](../README.md) →
+← [Flutter — Responsive & Adaptive Design](15-responsive-adaptive.md) · [Index](README.md) · [Home](../README.md) →
 <!-- nav -->

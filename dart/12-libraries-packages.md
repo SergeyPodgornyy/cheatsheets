@@ -190,5 +190,5 @@ var lines = utf8.decoder.bind(inputStream).transform(const LineSplitter());
 <!-- nav -->
 ---
 
-← [Dart — Async (Future, Stream, Isolate)](11-async.md) · [Index](../README.md) · [Dart — Tooling, Metadata & Docs](13-misc.md) →
+← [Dart — Async (Future, Stream, Isolate)](11-async.md) · [Index](README.md) · [Dart — Tooling, Metadata & Docs](13-misc.md) →
 <!-- nav -->

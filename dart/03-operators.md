@@ -195,5 +195,5 @@ var combined = [0, ...listA, ...?maybeListB, 5];
 <!-- nav -->
 ---
 
-← [Dart — Types & Collections](02-types-collections.md) · [Index](../README.md) · [Dart — Control Flow](04-control-flow.md) →
+← [Dart — Types & Collections](02-types-collections.md) · [Index](README.md) · [Dart — Control Flow](04-control-flow.md) →
 <!-- nav -->

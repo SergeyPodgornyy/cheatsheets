@@ -82,5 +82,5 @@ When multiple recognizers compete for the same pointer, the framework runs a **g
 <!-- nav -->
 ---
 
-← [Flutter — Slivers & Advanced Scrolling](13-slivers-scrolling.md) · [Index](../README.md) · [Flutter — Responsive & Adaptive Design](15-responsive-adaptive.md) →
+← [Flutter — Slivers & Advanced Scrolling](13-slivers-scrolling.md) · [Index](README.md) · [Flutter — Responsive & Adaptive Design](15-responsive-adaptive.md) →
 <!-- nav -->

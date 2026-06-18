@@ -88,5 +88,5 @@ BaseException
 <!-- nav -->
 ---
 
-← [Python — OOP](10-oop.md) · [Index](../README.md) · [Python — Dependencies](12-dependencies.md) →
+← [Python — OOP](10-oop.md) · [Index](README.md) · [Python — Dependencies](12-dependencies.md) →
 <!-- nav -->

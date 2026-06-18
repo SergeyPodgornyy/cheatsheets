@@ -111,5 +111,5 @@ ConstrainedBox(
 <!-- nav -->
 ---
 
-← [Flutter — Layout](03-layout.md) · [Index](../README.md) · [Flutter — Common Widgets](05-common-widgets.md) →
+← [Flutter — Layout](03-layout.md) · [Index](README.md) · [Flutter — Common Widgets](05-common-widgets.md) →
 <!-- nav -->

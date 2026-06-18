@@ -127,5 +127,5 @@ StreamBuilder<int>(
 <!-- nav -->
 ---
 
-← [Flutter — State Management](09-state-management.md) · [Index](../README.md) · [Flutter — Theming & Animations](11-theming-animations.md) →
+← [Flutter — State Management](09-state-management.md) · [Index](README.md) · [Flutter — Theming & Animations](11-theming-animations.md) →
 <!-- nav -->

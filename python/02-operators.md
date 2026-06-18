@@ -176,5 +176,5 @@ smile: str = bytes([240, 159, 152, 138]).decode('utf-8') # 😊
 <!-- nav -->
 ---
 
-← [Python — Basics](01-basics.md) · [Index](../README.md) · [Python — Flow](03-flow.md) →
+← [Python — Basics](01-basics.md) · [Index](README.md) · [Python — Flow](03-flow.md) →
 <!-- nav -->

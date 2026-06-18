@@ -91,5 +91,5 @@ CupertinoApp(
 <!-- nav -->
 ---
 
-← [Flutter — Testing](12-testing.md) · [Index](../README.md) · [Flutter — Gestures](14-gestures.md) →
+← [Flutter — Testing](12-testing.md) · [Index](README.md) · [Flutter — Gestures](14-gestures.md) →
 <!-- nav -->

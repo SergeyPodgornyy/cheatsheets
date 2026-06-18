@@ -179,5 +179,5 @@ Local keys must be unique **among siblings**; a `GlobalKey` is unique across the
 <!-- nav -->
 ---
 
-← [Flutter — Basics](01-basics.md) · [Index](../README.md) · [Flutter — Layout](03-layout.md) →
+← [Flutter — Basics](01-basics.md) · [Index](README.md) · [Flutter — Layout](03-layout.md) →
 <!-- nav -->

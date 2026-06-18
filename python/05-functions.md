@@ -207,5 +207,5 @@ Every single function that does not return something, does implicitly return `No
 <!-- nav -->
 ---
 
-← [Python — Comprehension and Unpacking](04-comprehension.md) · [Index](../README.md) · [Python — Modules / Packages / Libraries](06-modules.md) →
+← [Python — Comprehension and Unpacking](04-comprehension.md) · [Index](README.md) · [Python — Modules / Packages / Libraries](06-modules.md) →
 <!-- nav -->

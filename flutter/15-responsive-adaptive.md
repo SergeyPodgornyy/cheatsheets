@@ -69,5 +69,5 @@ SingleChildScrollView(
 <!-- nav -->
 ---
 
-← [Flutter — Gestures](14-gestures.md) · [Index](../README.md) · [Flutter — Assets & Fonts](16-assets-fonts.md) →
+← [Flutter — Gestures](14-gestures.md) · [Index](README.md) · [Flutter — Assets & Fonts](16-assets-fonts.md) →
 <!-- nav -->

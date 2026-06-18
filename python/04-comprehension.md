@@ -86,5 +86,5 @@ print(*numbers, **params)
 <!-- nav -->
 ---
 
-← [Python — Flow](03-flow.md) · [Index](../README.md) · [Python — Functions](05-functions.md) →
+← [Python — Flow](03-flow.md) · [Index](README.md) · [Python — Functions](05-functions.md) →
 <!-- nav -->

@@ -282,5 +282,5 @@ double calculateArea(Shape shape) => switch (shape) {
 <!-- nav -->
 ---
 
-← [Dart — Functions](05-functions.md) · [Index](../README.md) · [Dart — Classes](07-classes.md) →
+← [Dart — Functions](05-functions.md) · [Index](README.md) · [Dart — Classes](07-classes.md) →
 <!-- nav -->

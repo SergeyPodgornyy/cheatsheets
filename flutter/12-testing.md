@@ -104,5 +104,5 @@ $ flutter test integration_test
 <!-- nav -->
 ---
 
-← [Flutter — Theming & Animations](11-theming-animations.md) · [Index](../README.md) · [Flutter — Slivers & Advanced Scrolling](13-slivers-scrolling.md) →
+← [Flutter — Theming & Animations](11-theming-animations.md) · [Index](README.md) · [Flutter — Slivers & Advanced Scrolling](13-slivers-scrolling.md) →
 <!-- nav -->

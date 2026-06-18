@@ -191,5 +191,5 @@ const Center(child: Text('centered'));
 <!-- nav -->
 ---
 
-← [Flutter — Widgets & State](02-widgets.md) · [Index](../README.md) · [Flutter — Constraints & Sizing](04-constraints.md) →
+← [Flutter — Widgets & State](02-widgets.md) · [Index](README.md) · [Flutter — Constraints & Sizing](04-constraints.md) →
 <!-- nav -->
