@@ -1,4 +1,4 @@
-# PHP — Control Flow
+# PHP: Control Flow
 
 *Source: https://www.php.net/manual/en/control-structures.intro.php*
 
@@ -18,12 +18,12 @@ if ($ok) echo "yes";        // braces optional for single statement
 
 ## switch
 
-Compares with **loose `==`**. Cases **fall through** to the next unless `break`.
+Compares with loose `==`. Cases fall through to the next unless `break`.
 
 ```php
 switch ($day) {
     case 1:
-    case 7:                  // shared body — fall-through is intentional here
+    case 7:                  // shared body: fall-through is intentional here
         echo "Weekend";
         break;
     case 3:
@@ -33,30 +33,30 @@ switch ($day) {
         echo "Other";
 }
 // GOTCHA: forgetting break runs the NEXT case too.
-// GOTCHA: loose == — switch("0") matches case 0.
+// GOTCHA: loose ==, so switch("0") matches case 0.
 ```
 
 ## match
 
-**Strict `===`** comparison, **returns a value**, **no fall-through**, throws `UnhandledMatchError` if nothing matches (no `default`).
+Strict `===` comparison, returns a value, no fall-through, and throws `UnhandledMatchError` if nothing matches (no `default`).
 
 ```php
 $msg = match ($status) {
     200, 201 => "Success",       // multiple conditions per arm (comma)
     404      => "Not Found",
     default  => "Unknown",
-};                                // note the trailing semicolon — it's an expression
+};                                // note the trailing semicolon: it's an expression
 
-// strict comparison — no type juggling:
+// strict comparison, no type juggling:
 $x = match ("1") {
     1   => "int",
     "1" => "string",   // ← this matches ("1" === "1")
 };
 
-match (5) { 1 => 'a' };  // UnhandledMatchError — no arm matched, no default
+match (5) { 1 => 'a' };  // UnhandledMatchError: no arm matched, no default
 ```
 
-**`match(true)`** for ranges / arbitrary conditions:
+`match(true)` for ranges / arbitrary conditions:
 
 ```php
 $group = match (true) {
@@ -78,12 +78,12 @@ while ($i <= 3) {
 
 ## do-while
 
-Body runs **at least once** — condition checked after.
+Body runs at least once; the condition is checked after.
 
 ```php
 $i = 10;
 do {
-    echo $i;   // 10 — printed even though condition is false
+    echo $i;   // 10, printed even though the condition is false
 } while ($i < 5);
 ```
 
@@ -121,7 +121,7 @@ unset($value);          // GOTCHA: $value still references the last element!
                         // forgetting unset() corrupts the array on the next reuse.
 ```
 
-## break / continue with Levels
+## break / continue with levels
 
 ```php
 foreach ($rows as $row) {
@@ -135,7 +135,7 @@ foreach ($rows as $row) {
 // break;     → exit current loop
 ```
 
-## Alternative Syntax (Templating)
+## Alternative syntax (templating)
 
 Replace `{` with `:` and `}` with `endif;` / `endforeach;` / `endwhile;` / `endfor;` / `endswitch;`. Cleaner when interleaving with HTML.
 
@@ -151,7 +151,7 @@ Replace `{` with `:` and `}` with `endif;` / `endforeach;` / `endwhile;` / `endf
 <?php endif; ?>
 ```
 
-## list() / Array Destructuring
+## list() / array destructuring
 
 Unpack arrays into variables.
 
@@ -175,5 +175,5 @@ foreach ([[1, 'a'], [2, 'b']] as [$id, $label]) { // destructure in loop
 <!-- nav -->
 ---
 
-← [PHP — Operators](03-operators.md) · [Index](README.md) · [PHP — Functions](05-functions.md) →
+← [PHP: Operators](03-operators.md) · [Index](README.md) · [PHP: Functions](05-functions.md) →
 <!-- nav -->

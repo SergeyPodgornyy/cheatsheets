@@ -1,10 +1,10 @@
-# Flutter — Navigation & Routing
+# Flutter: Navigation & Routing
 
 *Source: https://docs.flutter.dev/ui/navigation*
 
-## Navigator — the stack model
+## Navigator: the stack model
 
-**`Navigator`** manages a **stack** of `Route` objects. **Push** a route to put a new screen on top; **pop** to remove it and reveal the one beneath. Transitions match the platform.
+`Navigator` manages a stack of `Route` objects. Push a route to put a new screen on top; pop to remove it and reveal the one beneath. Transitions match the platform.
 
 ## Push & pop
 
@@ -26,7 +26,7 @@ Navigator.pop(context);
 
 ## Passing data via constructor (recommended)
 
-Plain Dart — pass the data into the next screen's constructor.
+Plain Dart: pass the data into the next screen's constructor.
 
 ```dart
 class DetailScreen extends StatelessWidget {
@@ -54,7 +54,7 @@ onTap: () {
 },
 ```
 
-### Alternative — RouteSettings arguments
+### Alternative: RouteSettings arguments
 
 ```dart
 Navigator.push(
@@ -80,7 +80,7 @@ Future<void> _navigateAndDisplaySelection(BuildContext context) async {
     MaterialPageRoute<String>(builder: (context) => const SelectionScreen()),
   );
 
-  // Gotcha: after an async gap the widget may be gone — check before using context
+  // Gotcha: after an async gap the widget may be gone, so check before using context
   if (!context.mounted) return;
 
   ScaffoldMessenger.of(context)
@@ -88,13 +88,13 @@ Future<void> _navigateAndDisplaySelection(BuildContext context) async {
     ..showSnackBar(SnackBar(content: Text('$result')));
 }
 
-// On the second screen — pass the result as pop's second arg:
+// On the second screen, pass the result as pop's second arg:
 Navigator.pop(context, 'Yep!');
 ```
 
 ## Named routes (NOT recommended)
 
-Declare routes in `MaterialApp.routes`, navigate by name. **Avoid for most apps** — can't customize deep-link behavior, and the browser forward button won't work. Prefer `Navigator` + `MaterialPageRoute`, or `go_router`.
+Declare routes in `MaterialApp.routes`, navigate by name. **Avoid for most apps**: you can't customize deep-link behavior, and the browser forward button won't work. Prefer `Navigator` + `MaterialPageRoute`, or `go_router`.
 
 ```dart
 Navigator.pushNamed(context, '/second');
@@ -107,9 +107,9 @@ MaterialApp(
 )
 ```
 
-## go_router — declarative routing (recommended for advanced / web)
+## go_router: declarative routing (recommended for advanced / web)
 
-Apps with advanced navigation or web deep links should use the **`Router`** (via `MaterialApp.router`) with the **`go_router`** package.
+Apps with advanced navigation or web deep links should use the `Router` (via `MaterialApp.router`) with the `go_router` package.
 
 ```dart
 context.go('/second');                              // declarative navigation
@@ -122,5 +122,5 @@ MaterialApp.router(
 <!-- nav -->
 ---
 
-← [Flutter — Input & Forms](07-input-forms.md) · [Index](README.md) · [Flutter — State Management](09-state-management.md) →
+← [Flutter: Input & Forms](07-input-forms.md) · [Index](README.md) · [Flutter: State Management](09-state-management.md) →
 <!-- nav -->

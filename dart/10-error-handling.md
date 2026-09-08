@@ -1,4 +1,4 @@
-# Dart — Error Handling
+# Dart: Error Handling
 
 *Source: https://dart.dev/language/error-handling*
 
@@ -6,25 +6,21 @@
 
 Dart has two predefined hierarchies, both with subtypes. All exceptions are **unchecked**: no method declares what it throws, and the compiler never forces a catch.
 
-```dart
-// Error  -> a programming BUG. Should crash, NOT be caught. Fix the code.
-//   e.g. ArgumentError, RangeError, StateError, UnimplementedError, AssertionError
-// Exception -> a recoverable runtime condition you can reasonably handle.
-//   e.g. FormatException, IOException, TimeoutException
-```
+- `Error` is a programming bug. It should crash rather than be caught; fix the code. Examples: `ArgumentError`, `RangeError`, `StateError`, `UnimplementedError`, `AssertionError`.
+- `Exception` is a recoverable runtime condition you can reasonably handle. Examples: `FormatException`, `IOException`, `TimeoutException`.
 
 You may `throw` any non-null object, but production code should throw `Exception`/`Error` types (not raw strings).
 
 ```dart
 throw FormatException('Expected at least 1 section');
-throw 'Out of llamas!';   // legal — arbitrary object, but discouraged
+throw 'Out of llamas!';   // legal: arbitrary object, but discouraged
 ```
 
-An **uncaught** error suspends the current isolate and usually terminates the program.
+An uncaught error suspends the current isolate and usually terminates the program.
 
 ## throw
 
-`throw` is an **expression**, so it works in arrow functions and `??`/ternary positions.
+`throw` is an expression, so it works in arrow functions and `??`/ternary positions.
 
 ```dart
 void distanceTo(Point other) => throw UnimplementedError(); // throw as expression
@@ -34,7 +30,7 @@ final name = input ?? throw ArgumentError('name required'); // in ?? position
 
 ## try / on / catch
 
-`on` selects the **type**; `catch` binds the thrown **object**.
+`on` selects the type; `catch` binds the thrown object.
 
 ```dart
 try {
@@ -59,7 +55,7 @@ try {
 
 ## Multiple on clauses
 
-First matching type wins — order **specific → general**. A bare `catch` is the catch-all and must come last.
+First matching type wins, so order them specific → general. A bare `catch` is the catch-all and must come last.
 
 ```dart
 try {
@@ -75,7 +71,7 @@ try {
 
 ## rethrow
 
-Partially handle, then propagate the **same** error (preserving the stack trace) to an outer handler.
+Partially handle, then propagate the same error (preserving the stack trace) to an outer handler.
 
 ```dart
 void misbehave() {
@@ -91,7 +87,7 @@ void misbehave() {
 
 ## finally
 
-Always runs — whether or not an exception was thrown, and after any matching `catch`.
+Always runs, whether or not an exception was thrown, and after any matching `catch`.
 
 ```dart
 try {
@@ -111,7 +107,7 @@ try {
 
 ## assert
 
-`assert(condition, [message])` throws `AssertionError` when the condition is false. **Dev-only**: stripped in production — neither the condition nor the message argument is evaluated.
+`assert(condition, [message])` throws `AssertionError` when the condition is false. **Dev-only**: stripped in production, where neither the condition nor the message argument is evaluated.
 
 ```dart
 assert(text != null);
@@ -130,15 +126,15 @@ Enabled in Flutter debug mode; ignored in production (e.g. `dart compile exe`, r
 
 | Type | Meaning |
 | --- | --- |
-| `FormatException` | string/data not in expected format — `int.parse('x')` |
+| `FormatException` | string/data not in expected format, e.g. `int.parse('x')` |
 | `UnimplementedError` | method/operation not yet implemented (an `Error`) |
-| `ArgumentError` | argument out of allowed range/shape — `ArgumentError.value(x)` |
-| `RangeError` | index/value outside valid range — `list[10]` on shorter list |
-| `StateError` | object in wrong state for the call — `iterable.first` on empty |
+| `ArgumentError` | argument out of allowed range/shape, e.g. `ArgumentError.value(x)` |
+| `RangeError` | index/value outside valid range, e.g. `list[10]` on a shorter list |
+| `StateError` | object in wrong state for the call, e.g. `iterable.first` on empty |
 | `AssertionError` | failed `assert` (dev-only) |
 
 <!-- nav -->
 ---
 
-← [Dart — Generics](09-generics.md) · [Index](README.md) · [Dart — Async (Future, Stream, Isolate)](11-async.md) →
+← [Dart: Generics](09-generics.md) · [Index](README.md) · [Dart: Async (Future, Stream, Isolate)](11-async.md) →
 <!-- nav -->

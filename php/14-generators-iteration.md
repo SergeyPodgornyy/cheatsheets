@@ -1,10 +1,10 @@
-# PHP — Generators & Iteration
+# PHP: Generators & Iteration
 
 *Source: https://www.php.net/manual/en/language.generators.php*
 
 ## Generators
 
-A function containing **`yield`** is a **generator**: calling it returns a `Generator` object (which implements `Iterator`). Generators are **lazy** (the body runs only while iterating), **forward-only**, and **memory-efficient** — they hold one state at a time instead of building a whole array.
+A function containing `yield` is a **generator**: calling it returns a `Generator` object (which implements `Iterator`). Generators are lazy (the body runs only while iterating), forward-only, and memory-efficient, since they hold one state at a time instead of building a whole array.
 
 ```php
 function xrange($start, $limit, $step = 1)
@@ -21,7 +21,7 @@ foreach (xrange(1, 9, 2) as $n) {
 // range(0, 1000000) ~100 MB in an array; the generator equivalent <1 KB.
 ```
 
-Assigning a generator does **NOT** run its body — execution starts on first iteration:
+Assigning a generator does NOT run its body; execution starts on the first iteration:
 
 ```php
 $g = xrange(1, 9, 2);        // not started yet
@@ -33,7 +33,7 @@ foreach ($g as $n) { }       // body runs now (foreach calls ->rewind())
 ```php
 yield $value;            // auto-incrementing integer key (0, 1, 2, ...)
 yield $key => $value;    // explicit key
-yield;                   // yields null — a bare pause point / coroutine
+yield;                   // yields null: a bare pause point / coroutine
 ```
 
 ### Return value + getReturn()
@@ -76,7 +76,7 @@ foreach (outer() as $v) {
 }
 ```
 
-### finally — cleanup
+### finally: cleanup
 
 `finally` runs even when the loop `break`s early, so it is the place to release resources.
 
@@ -94,9 +94,9 @@ function getLines($file)
 }
 ```
 
-### send() — two-way coroutine
+### send(): two-way coroutine
 
-`$g->send($x)` resumes the generator and makes the *paused* `yield` expression evaluate to `$x` — values flow back INTO the generator, turning it into a coroutine.
+`$g->send($x)` resumes the generator and makes the *paused* `yield` expression evaluate to `$x`. Values flow back INTO the generator, turning it into a coroutine.
 
 | Method | Description |
 | --- | --- |
@@ -112,11 +112,11 @@ function getLines($file)
 $g->send($x);                // inside the generator, `$received = yield;` gets $x
 ```
 
-## Iteration Interfaces
+## Iteration interfaces
 
 ### Traversable
 
-Base interface that makes an object usable in `foreach`. **Don't implement it directly** — implement `Iterator` or `IteratorAggregate` (both extend `Traversable`).
+Base interface that makes an object usable in `foreach`. Don't implement it directly; implement `Iterator` or `IteratorAggregate` (both extend `Traversable`).
 
 ### Iterator
 
@@ -264,7 +264,7 @@ class Money implements Stringable
 echo new Money(1050); // 10.50
 ```
 
-## Built-in SPL Iterators
+## Built-in SPL iterators
 
 `ArrayIterator`, `IteratorIterator`, `LimitIterator`, `FilterIterator`, `CallbackFilterIterator`, `RecursiveIteratorIterator`, `RecursiveDirectoryIterator`, and more.
 
@@ -275,5 +275,5 @@ iterator_to_array($iter);    // drain an iterator/generator into a plain array
 <!-- nav -->
 ---
 
-← [PHP — Database (PDO) & Tooling](13-database-tooling.md) · [Index](README.md) · [PHP — SPL (Standard PHP Library)](15-spl.md) →
+← [PHP: Database (PDO) & Tooling](13-database-tooling.md) · [Index](README.md) · [PHP: SPL (Standard PHP Library)](15-spl.md) →
 <!-- nav -->

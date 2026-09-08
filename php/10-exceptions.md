@@ -1,10 +1,10 @@
-# PHP — Exceptions & Errors
+# PHP: Exceptions & Errors
 
 *Source: https://www.php.net/manual/en/language.exceptions.php*
 
 ## try / catch / finally
 
-A `try` block needs at least one `catch` **or** a `finally`. `finally` runs no matter what — normal exit, caught exception, or rethrow.
+A `try` block needs at least one `catch` or a `finally`. `finally` runs no matter what: normal exit, caught exception, or rethrow.
 
 ```php
 function inverse($x)
@@ -30,7 +30,7 @@ try { throw new Exception('x'); }
 catch (Exception $e) { exit('bye'); }    // finally NOT executed
 finally { echo "never"; }
 
-// finally-return WINS — overrides any return in try/catch:
+// finally-return WINS: it overrides any return in try/catch:
 function f(): int
 {
     try { return 1; }
@@ -40,7 +40,7 @@ function f(): int
 
 ## `throw` as an expression
 
-`throw` is an expression — usable in `??`, `?:`, arrow functions, `or`, etc.
+`throw` is an expression, so it is usable in `??`, `?:`, arrow functions, `or`, etc.
 
 ```php
 do_something_risky() or throw new Exception('failed');
@@ -103,7 +103,7 @@ Throwable (interface)
        └── ...
 ```
 
-`catch (Throwable $e)` catches **both** `Error` and `Exception`.
+`catch (Throwable $e)` catches both `Error` and `Exception`.
 
 ```php
 try {
@@ -140,7 +140,7 @@ catch (Exception $e) {
 
 ## Exception chaining
 
-Pass the original exception as the **3rd constructor arg** (`$previous`) to preserve the cause.
+Pass the original exception as the 3rd constructor arg (`$previous`) to preserve the cause.
 
 ```php
 try {
@@ -157,7 +157,7 @@ try {
 
 ## Global handler
 
-`set_exception_handler()` registers a fallback for **uncaught** exceptions (after which the script terminates).
+`set_exception_handler()` registers a fallback for uncaught exceptions (after which the script terminates).
 
 ```php
 set_exception_handler(function (Throwable $e) {
@@ -169,5 +169,5 @@ set_exception_handler(function (Throwable $e) {
 <!-- nav -->
 ---
 
-← [PHP — Enums](09-enums.md) · [Index](README.md) · [PHP — Namespaces & Attributes](11-namespaces-attributes.md) →
+← [PHP: Enums](09-enums.md) · [Index](README.md) · [PHP: Namespaces & Attributes](11-namespaces-attributes.md) →
 <!-- nav -->

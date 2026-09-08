@@ -1,8 +1,8 @@
-# Flutter — Slivers & Advanced Scrolling
+# Flutter: Slivers & Advanced Scrolling
 
 *Source: https://docs.flutter.dev/cookbook/lists/floating-app-bar*
 
-A **sliver** is a portion of a scrollable area with custom scroll behavior. `ListView` and `GridView` are built on `SliverList` / `SliverGrid`. For custom scroll effects (collapsing headers, mixed list+grid), compose **slivers** inside a **`CustomScrollView`**.
+A **sliver** is a portion of a scrollable area with custom scroll behavior. `ListView` and `GridView` are built on `SliverList` / `SliverGrid`. For custom scroll effects (collapsing headers, mixed list+grid), compose slivers inside a `CustomScrollView`.
 
 ## CustomScrollView
 
@@ -11,12 +11,12 @@ Hosts a list of slivers in one shared scroll view.
 ```dart
 CustomScrollView(
   slivers: <Widget>[
-    // sliver widgets go here — they scroll together
+    // sliver widgets go here, they scroll together
   ],
 )
 ```
 
-## SliverAppBar — collapsing / floating header
+## SliverAppBar: collapsing / floating header
 
 ```dart
 CustomScrollView(
@@ -35,12 +35,11 @@ CustomScrollView(
 )
 ```
 
-```dart
-// Header behavior flags:
-// pinned: true    -> remains on screen, shrunk, when scrolled past
-// floating: true  -> reappears immediately on any upward scroll
-// snap: true       -> (with floating) animate fully in/out
-```
+Header behavior flags:
+
+- `pinned: true` remains on screen, shrunk, when scrolled past.
+- `floating: true` reappears immediately on any upward scroll.
+- `snap: true` animates fully in or out (with `floating`).
 
 ## Sliver list & grid
 
@@ -91,5 +90,5 @@ CupertinoApp(
 <!-- nav -->
 ---
 
-← [Flutter — Testing](12-testing.md) · [Index](README.md) · [Flutter — Gestures](14-gestures.md) →
+← [Flutter: Testing](12-testing.md) · [Index](README.md) · [Flutter: Gestures](14-gestures.md) →
 <!-- nav -->

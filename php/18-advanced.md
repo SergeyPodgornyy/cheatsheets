@@ -1,10 +1,10 @@
-# PHP — Advanced (Fibers, Streams, Closures, Serialization)
+# PHP: Advanced (Fibers, Streams, Closures, Serialization)
 
 *Source: https://www.php.net/manual/en/langref.php*
 
 ## Fibers
 
-A **Fiber** is a full-stack, interruptible function for **cooperative concurrency**: one runs at a time, in the same thread, and suspension is explicit. It's the low-level primitive async frameworks build on.
+A **Fiber** is a full-stack, interruptible function for cooperative concurrency: one runs at a time, in the same thread, and suspension is explicit. It's the low-level primitive async frameworks build on.
 
 ```php
 $fiber = new Fiber(function (): void {
@@ -47,7 +47,7 @@ echo $f->getReturn(); // 42
 
 ## WeakReference & WeakMap
 
-A **weak reference** does NOT prevent its target from being garbage-collected — avoids memory leaks in caches/registries.
+A **weak reference** does NOT prevent its target from being garbage-collected, which avoids memory leaks in caches and registries.
 
 ```php
 $obj = new stdClass();
@@ -58,7 +58,7 @@ unset($obj);
 $ref->get();   // null
 ```
 
-**WeakMap** — keys are objects held weakly; an entry is auto-removed when its key object is gc'd. Perfect for attaching metadata to objects without leaking.
+**WeakMap**: keys are objects held weakly; an entry is auto-removed when its key object is gc'd. Perfect for attaching metadata to objects without leaking.
 
 ```php
 $map  = new WeakMap();
@@ -103,7 +103,7 @@ $fn = strlen(...);                      // first-class callable syntax (preferre
 
 Closures capture by value via `use ($v)` (auto for `fn()`), by reference via `use (&$v)`.
 
-## I/O Stream Wrappers
+## I/O stream wrappers
 
 `php://` stream wrappers:
 
@@ -139,7 +139,7 @@ rewind($fp);
 echo stream_get_contents($fp); // data
 ```
 
-Stream context — supply HTTP method/headers/POST body to `file_get_contents`:
+Stream context: supply the HTTP method, headers, and POST body to `file_get_contents`:
 
 ```php
 $ctx = stream_context_create([
@@ -210,7 +210,7 @@ class Session
 // (older: __sleep() / __wakeup())
 ```
 
-JSON serialization — customize how an object is encoded by `json_encode`:
+JSON serialization: customize how an object is encoded by `json_encode`:
 
 ```php
 class Money implements JsonSerializable
@@ -226,9 +226,9 @@ class Money implements JsonSerializable
 echo json_encode(new Money(1050)); // {"amount":10.5}
 ```
 
-## Output Buffering
+## Output buffering
 
-Capture output instead of sending it immediately — templating, post-processing, capturing includes.
+Capture output instead of sending it immediately: templating, post-processing, capturing includes.
 
 ```php
 ob_start();
@@ -249,5 +249,5 @@ $html = ob_get_clean(); // get buffer contents AND discard the buffer
 <!-- nav -->
 ---
 
-← [PHP — Dependency Injection & Reflection](17-di-reflection.md) · [Index](README.md) · [Home](../README.md) →
+← [PHP: Dependency Injection & Reflection](17-di-reflection.md) · [Index](README.md) · [Home](../README.md) →
 <!-- nav -->

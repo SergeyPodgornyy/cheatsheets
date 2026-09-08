@@ -1,4 +1,4 @@
-# Python — Generators, Decorators, Memoization
+# Python: Generators, Decorators, Memoization
 
 ## Generators
 
@@ -113,5 +113,5 @@ def factorial(num: int) -> int:
 <!-- nav -->
 ---
 
-← [Python — File Handling](07-file-handling.md) · [Index](README.md) · [Python — AsyncIO](09-async.md) →
+← [Python: File Handling](07-file-handling.md) · [Index](README.md) · [Python: AsyncIO](09-async.md) →
 <!-- nav -->

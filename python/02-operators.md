@@ -1,4 +1,4 @@
-# Python — Operators
+# Python: Operators
 
 ## Numeric
 
@@ -88,7 +88,7 @@ print(f'{a} == {b}?', isclose(a, b, abs_tol=.002)) # True
 # abs_tol (absolute tolerance): difference below it will be considered as tolerant
 ```
 
-It is possible to specify both `rel_tol` and `abs_tol` — then the expression will be tolerant if **one of** these conditions is met.
+It is possible to specify both `rel_tol` and `abs_tol`, then the expression will be tolerant if **one of** these conditions is met.
 
 ## Formatting variables (old style)
 
@@ -176,5 +176,5 @@ smile: str = bytes([240, 159, 152, 138]).decode('utf-8') # 😊
 <!-- nav -->
 ---
 
-← [Python — Basics](01-basics.md) · [Index](README.md) · [Python — Flow](03-flow.md) →
+← [Python: Basics](01-basics.md) · [Index](README.md) · [Python: Flow](03-flow.md) →
 <!-- nav -->

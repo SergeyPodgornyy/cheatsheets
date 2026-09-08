@@ -1,16 +1,16 @@
-# Flutter — Common Widgets
+# Flutter: Common Widgets
 
 *Source: https://docs.flutter.dev/ui/widgets/material*
 
-Standard widgets (**Text**, **Row**, **Column**, **Container**, etc.) come from the **widgets library** — available in any app. Specialized design widgets below come from the **Material library** (`import 'package:flutter/material.dart';`) and require a Material app. Cupertino widgets give iOS-style design.
+Standard widgets (`Text`, `Row`, `Column`, `Container`, etc.) come from the widgets library and are available in any app. The specialized design widgets below come from the Material library (`import 'package:flutter/material.dart';`) and require a Material app. Cupertino widgets give iOS-style design.
 
 ## Material widgets
 
 | Widget | Purpose |
 | --- | --- |
-| `Scaffold` | Basic Material layout structure — slots: `appBar`, `body`, `floatingActionButton`, `drawer`, `bottomNavigationBar` |
+| `Scaffold` | Basic Material layout structure; slots: `appBar`, `body`, `floatingActionButton`, `drawer`, `bottomNavigationBar` |
 | `AppBar` | Top bar: `title`, content, `actions` |
-| `ElevatedButton` | Raised button w/ shadow — primary action |
+| `ElevatedButton` | Raised button with a shadow, for the primary action |
 | `TextButton` | Flat low-emphasis button |
 | `OutlinedButton` | Bordered medium-emphasis button |
 | `IconButton` | Clickable icon |
@@ -50,31 +50,31 @@ iOS-style design. `import 'package:flutter/cupertino.dart';`
 ## Common widget snippets
 
 ```dart
-// Text — styled via TextStyle
+// Text: styled via TextStyle
 Text('Hello', style: TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.bold,
   color: Colors.black,
 ))
 
-// Icon — from the Icons set; Colors.green[500] picks a shade
+// Icon: from the Icons set; Colors.green[500] picks a shade
 Icon(Icons.star, color: Colors.green[500])
 
 // Images
 Image.asset('images/pic.jpg')      // bundled asset (declare in pubspec.yaml)
 Image.network('https://...')        // remote image
 
-// Buttons — onPressed: null disables the button
+// Buttons: onPressed: null disables the button
 ElevatedButton(onPressed: () {}, child: const Text('Increment'))
 IconButton(icon: Icon(Icons.menu), tooltip: 'Menu', onPressed: () {})
 
-// CircleAvatar — round badge, often initials or a photo
+// CircleAvatar: round badge, often initials or a photo
 CircleAvatar(backgroundColor: Colors.blue, child: Text('A'))
 
-// Divider — thin horizontal rule between content
+// Divider: thin horizontal rule between content
 Divider()
 
-// SizedBox — fixed-size box; also pure spacing between widgets
+// SizedBox: fixed-size box; also pure spacing between widgets
 SizedBox(width: 16)                 // 16px gap
 SizedBox(height: 210, child: ...)   // constrains child height
 ```
@@ -106,9 +106,9 @@ SizedBox(
 )
 ```
 
-## SnackBar — via ScaffoldMessenger
+## SnackBar via ScaffoldMessenger
 
-Don't call on the widget directly — use **`ScaffoldMessenger.of(context)`**.
+Don't call it on the widget directly; use `ScaffoldMessenger.of(context)`.
 
 ```dart
 ScaffoldMessenger.of(context).showSnackBar(
@@ -121,7 +121,7 @@ ScaffoldMessenger.of(context)
   ..showSnackBar(SnackBar(content: Text('$result')));
 ```
 
-## AlertDialog — via showDialog
+## AlertDialog via showDialog
 
 ```dart
 showDialog(
@@ -136,5 +136,5 @@ showDialog(
 <!-- nav -->
 ---
 
-← [Flutter — Constraints & Sizing](04-constraints.md) · [Index](README.md) · [Flutter — Lists & Scrolling](06-lists-scrolling.md) →
+← [Flutter: Constraints & Sizing](04-constraints.md) · [Index](README.md) · [Flutter: Lists & Scrolling](06-lists-scrolling.md) →
 <!-- nav -->

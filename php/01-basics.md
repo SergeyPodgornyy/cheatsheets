@@ -1,26 +1,26 @@
-# PHP — Basics
+# PHP: Basics
 
 *Source: https://www.php.net/manual/en/langref.php*
 
-**PHP** is a **server-side** scripting language: **dynamically typed** (type inferred at runtime), **loosely typed** (auto-coercion between types), and **interpreted**. Code lives between `<?php ... ?>` tags; statements end with `;`.
+PHP is a server-side scripting language: **dynamically typed** (type inferred at runtime), **loosely typed** (auto-coercion between types), and interpreted. Code lives between `<?php ... ?>` tags; statements end with `;`.
 
-## PHP Tags & Output
+## PHP tags & output
 
-A pure-PHP file opens with `<?php` and **omits the closing `?>`** (avoids accidental whitespace in output).
+A pure-PHP file opens with `<?php` and omits the closing `?>` (avoids accidental whitespace in output).
 
 ```php
 <?php
-echo "Hello, World!\n";   // echo — no return value, accepts multiple args
-echo "a", "b", "c";       // abc — comma-separated
+echo "Hello, World!\n";   // echo: no return value, accepts multiple args
+echo "a", "b", "c";       // abc, comma-separated
 
-print "Hi";               // print — returns 1, single arg only (usable in expressions)
+print "Hi";               // print: returns 1, single arg only (usable in expressions)
 $ok = print "x";          // prints x, $ok === 1
 
-printf("%d items", 5);    // 5 items — formatted (returns length printed)
-$s = sprintf("%05.2f", 3.1); // "03.10" — returns string, no output
+printf("%d items", 5);    // 5 items, formatted (returns length printed)
+$s = sprintf("%05.2f", 3.1); // "03.10", returns string, no output
 ```
 
-**Short echo** in templates — interleave with HTML:
+**Short echo** in templates, to interleave with HTML:
 
 ```php
 <p>Hello <?= $name ?>, you have <?= $count ?> messages</p>
@@ -39,33 +39,33 @@ echo 1; // inline
 
 ## Variables
 
-All variables start with `$` and are **case-sensitive** (`$name` != `$Name`). **Loosely typed** — type inferred from value; reassignment can change type.
+All variables start with `$` and are case-sensitive (`$name` != `$Name`). PHP is loosely typed: the type is inferred from the value, and reassignment can change it.
 
 ```php
 $name  = 'Bob';     // string
 $age   = 42;        // int
-$age   = 'forty';   // OK — type can change at runtime
+$age   = 'forty';   // OK: type can change at runtime
 $ready = true;      // bool
 
 var_dump($name); // string(3) "Bob"
 ```
 
-**References** — `&` makes two names point at the same value:
+**References**: `&` makes two names point at the same value:
 
 ```php
 $a = 1;
 $b = &$a;   // $b references $a
 $b = 99;
-echo $a;    // 99 — changed through the reference
+echo $a;    // 99, changed through the reference
 ```
 
-**Variable variables** — use a variable's value as another variable's name:
+**Variable variables**: use a variable's value as another variable's name:
 
 ```php
 $key = 'color';
 $$key = 'red';   // creates $color
 echo $color;     // red
-echo ${$key};    // red — explicit form
+echo ${$key};    // red, explicit form
 ```
 
 ## Constants
@@ -84,7 +84,7 @@ const COLORS = ['r', 'g', 'b']; // arrays allowed
 
 `const` is resolved at compile time and respects namespaces; `define()` runs at execution and can sit inside `if`/loops.
 
-## Magic Constants
+## Magic constants
 
 Compile-time constants that change depending on where they are used.
 
@@ -113,7 +113,7 @@ echo PHP_INT_SIZE;   // 8
 echo PHP_FLOAT_EPSILON; // smallest float diff
 ```
 
-## Inspecting Values
+## Inspecting values
 
 ```php
 var_dump($x);        // type + value, recursive: int(42), string(3) "abc"
@@ -130,5 +130,5 @@ var_export($arr);    // valid PHP code representation
 <!-- nav -->
 ---
 
-← [Home](../README.md) · [Index](README.md) · [PHP — Types](02-types.md) →
+← [Home](../README.md) · [Index](README.md) · [PHP: Types](02-types.md) →
 <!-- nav -->

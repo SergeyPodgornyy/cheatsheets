@@ -1,4 +1,4 @@
-# PHP — Enums
+# PHP: Enums
 
 *Source: https://www.php.net/manual/en/language.enumerations.php*
 
@@ -58,7 +58,7 @@ Suit::cases(); // [Suit::Hearts, Suit::Diamonds, Suit::Clubs, Suit::Spades]
 
 ## `from()` / `tryFrom()`
 
-**Backed enums only** — map a scalar back to a case. `from()` throws on a bad value; `tryFrom()` returns `null`.
+**Backed enums only**: map a scalar back to a case. `from()` throws on a bad value; `tryFrom()` returns `null`.
 
 ```php
 Suit::from('H');     // Suit::Hearts
@@ -120,10 +120,10 @@ enum Suit: string implements HasColor
 
 ## Facts
 
-- **Can't `new`** an enum — `new Suit()` is an error.
-- **Can't extend** an enum, and an enum can't extend a class.
-- **Each case is a singleton** object → compare with `===`.
-- May **use traits** (traits must not declare properties).
+- You can't `new` an enum; `new Suit()` is an error.
+- Can't extend an enum, and an enum can't extend a class.
+- Each case is a singleton object → compare with `===`.
+- May use traits (traits must not declare properties).
 
 ```php
 Suit::Hearts === Suit::Hearts;   // true  (same singleton instance)
@@ -134,5 +134,5 @@ Suit::Hearts === Suit::Spades;   // false
 <!-- nav -->
 ---
 
-← [PHP — OOP](08-oop.md) · [Index](README.md) · [PHP — Exceptions & Errors](10-exceptions.md) →
+← [PHP: OOP](08-oop.md) · [Index](README.md) · [PHP: Exceptions & Errors](10-exceptions.md) →
 <!-- nav -->

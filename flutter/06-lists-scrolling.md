@@ -1,10 +1,10 @@
-# Flutter — Lists & Scrolling
+# Flutter: Lists & Scrolling
 
 *Source: https://docs.flutter.dev/cookbook/lists/long-lists*
 
-## ListView — static children
+## ListView: static children
 
-A **`ListView`** is a scrolling `Column`: it scrolls automatically when content overflows, vertically (default) or horizontally.
+A `ListView` is a scrolling `Column`: it scrolls automatically when content overflows, vertically (default) or horizontally.
 
 ```dart
 ListView(
@@ -16,7 +16,7 @@ ListView(
   ],
 )
 
-// Helper that builds a ListTile — keeps children list readable
+// Helper that builds a ListTile, keeps the children list readable
 ListTile _tile(String title, String subtitle, IconData icon) {
   return ListTile(
     title: Text(title,
@@ -27,9 +27,9 @@ ListTile _tile(String title, String subtitle, IconData icon) {
 }
 ```
 
-## ListView.builder — long / infinite lists
+## ListView.builder: long / infinite lists
 
-**Gotcha:** the default `ListView(children: [...])` builds **every** child up front — fine for a handful, wasteful for thousands. `ListView.builder` builds items **lazily**, only as they scroll into view.
+**Gotcha:** the default `ListView(children: [...])` builds every child up front: fine for a handful, wasteful for thousands. `ListView.builder` builds items lazily, only as they scroll into view.
 
 ```dart
 ListView.builder(
@@ -52,17 +52,17 @@ final items = List<String>.generate(10000, (i) => 'Item $i');
 By default each item must be laid out to learn its size. Telling the list the extent up front lets it skip that work and scroll smoother.
 
 ```dart
-// Option 1 — prototypeItem: list measures this once, applies to all
+// Option 1, prototypeItem: list measures this once, applies to all
 ListView.builder(
   itemCount: items.length,
   prototypeItem: ListTile(title: Text(items.first)),
   itemBuilder: (context, index) => ListTile(title: Text(items[index])),
 )
 
-// Option 2 — itemExtent: fixed pixel size, every item identical
+// Option 2, itemExtent: fixed pixel size, every item identical
 ListView.builder(itemExtent: 56, itemCount: items.length, itemBuilder: ...)
 
-// Option 3 — itemExtentBuilder: variable per-index size
+// Option 3, itemExtentBuilder: variable per-index size
 ListView.builder(
   itemExtentBuilder: (index, dimensions) => index.isEven ? 56 : 80,
   itemCount: items.length,
@@ -70,10 +70,10 @@ ListView.builder(
 )
 ```
 
-## GridView — 2D scrollable grid
+## GridView: 2D scrollable grid
 
 ```dart
-// .extent — set a MAX tile width; column count derived from available space
+// .extent: set a MAX tile width; column count derived from available space
 GridView.extent(
   maxCrossAxisExtent: 150,
   padding: const EdgeInsets.all(4),
@@ -82,7 +82,7 @@ GridView.extent(
   children: List.generate(30, (i) => Image.asset('images/pic$i.jpg')),
 )
 
-// .count — fixed number of columns
+// .count: fixed number of columns
 GridView.count(
   crossAxisCount: 2,
   children: [...],
@@ -92,5 +92,5 @@ GridView.count(
 <!-- nav -->
 ---
 
-← [Flutter — Common Widgets](05-common-widgets.md) · [Index](README.md) · [Flutter — Input & Forms](07-input-forms.md) →
+← [Flutter: Common Widgets](05-common-widgets.md) · [Index](README.md) · [Flutter: Input & Forms](07-input-forms.md) →
 <!-- nav -->

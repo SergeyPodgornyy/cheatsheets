@@ -1,4 +1,4 @@
-# Dart — Functions
+# Dart: Functions
 
 *Source: https://dart.dev/language/functions*
 
@@ -13,14 +13,14 @@ bool isNoble(int atomicNumber) {
   return _nobleGases[atomicNumber] != null;
 }
 
-isNoble(atomicNumber) {            // types omitted — works, but not recommended
+isNoble(atomicNumber) {            // types omitted: works, but not recommended
   return _nobleGases[atomicNumber] != null;
 }
 ```
 
 ## Arrow `=>`
 
-Shorthand for a body that is a **single expression** only. `=> expr` means `{ return expr; }`.
+Shorthand for a body that is a single expression only. `=> expr` means `{ return expr; }`.
 
 ```dart
 bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
@@ -31,7 +31,7 @@ bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 
 ## Parameters
 
-Required positional, optionally followed by **either** named **or** optional positional (not both).
+Required positional, optionally followed by either named or optional positional, but not both.
 
 ### Required positional
 
@@ -49,7 +49,7 @@ void enableFlags({bool? bold, bool? hidden}) { ... }
 enableFlags(bold: true, hidden: false);
 ```
 
-Defaults must be **compile-time constants**:
+Defaults must be compile-time constants:
 
 ```dart
 void enableFlags({bool bold = false, bool hidden = false}) { ... }
@@ -62,7 +62,7 @@ enableFlags(bold: true);  // hidden defaults to false
 const Scrollbar({super.key, required Widget child});
 ```
 
-Named args can be placed **anywhere** in the call:
+Named args can be placed anywhere in the call:
 
 ```dart
 repeat(times: 2, () { ... });  // named arg before the positional fn
@@ -147,7 +147,7 @@ var uppercaseList = list.map((item) => item.toUpperCase()).toList();  // arrow f
 
 ## Lexical scope
 
-Variable scope follows the **curly braces outward** — resolved at write-time from the source structure.
+Variable scope follows the curly braces outward, resolved at write-time from the source structure.
 
 ## Lexical closures
 
@@ -166,7 +166,7 @@ assert(add4(3) == 7);
 
 ## Tear-offs
 
-Reference a function/method/constructor **without parentheses** — preferred over wrapping it in a lambda.
+Reference a function, method, or constructor without parentheses. Preferred over wrapping it in a lambda.
 
 ```dart
 charCodes.forEach(print);          // function tear-off
@@ -175,7 +175,7 @@ charCodes.forEach(buffer.write);   // method tear-off
 var strings = charCodes.map(String.fromCharCode);  // constructor tear-off
 var buffers = charCodes.map(StringBuffer.new);      // .new tear-off
 
-// charCodes.forEach((code) => print(code));  // avoid — lambda when a tear-off works
+// charCodes.forEach((code) => print(code));  // avoid: lambda when a tear-off works
 ```
 
 ## Return values
@@ -224,7 +224,7 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 
 ## external
 
-Declares a function whose **body is implemented elsewhere** (e.g. native/interop code).
+Declares a function whose body is implemented elsewhere (e.g. native/interop code).
 
 ```dart
 external void someFunc(int i);
@@ -233,5 +233,5 @@ external void someFunc(int i);
 <!-- nav -->
 ---
 
-← [Dart — Control Flow](04-control-flow.md) · [Index](README.md) · [Dart — Patterns & Destructuring](06-patterns-records.md) →
+← [Dart: Control Flow](04-control-flow.md) · [Index](README.md) · [Dart: Patterns & Destructuring](06-patterns-records.md) →
 <!-- nav -->

@@ -1,22 +1,18 @@
-# Flutter — Basics
+# Flutter: Basics
 
 *Source: https://docs.flutter.dev/ui/widgets-intro*
 
-## Everything Is a Widget
+## Everything is a widget
 
-Flutter UI is built from **widgets** (framework inspired by **React**). A widget describes its view given its current **config + state**. On state change, the widget rebuilds; the framework **diffs** the new description against the previous one and applies the **minimal changes** to the underlying render tree.
+Flutter UI is built from **widgets**, a framework inspired by React. A widget describes its view given its current config and state. On state change the widget rebuilds, and the framework diffs the new description against the previous one, applying the minimal changes to the underlying render tree.
 
-```dart
-// You author widgets as subclasses of StatelessWidget or StatefulWidget.
-// A widget's main job is build() — describing itself via lower-level widgets,
-// down to RenderObject (handles geometry/painting).
-```
+You author widgets as subclasses of `StatelessWidget` or `StatefulWidget`. A widget's main job is `build()`, which describes it via lower-level widgets, down to `RenderObject` (geometry and painting).
 
 The **widget tree** is the composition: widgets nest other widgets via `child` / `children`.
 
-## runApp — Minimal Hello World
+## runApp: a minimal app
 
-`runApp` makes the given widget the **root** of the tree. The root is forced to **fill the screen**.
+`runApp` makes the given widget the root of the tree. The root is forced to fill the screen.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -26,7 +22,7 @@ void main() {
     const Center(
       child: Text(
         'Hello, world!',
-        textDirection: TextDirection.ltr, // required without MaterialApp —
+        textDirection: TextDirection.ltr, // required without MaterialApp:
                                           // no ambient Directionality otherwise
         style: TextStyle(color: Colors.blue),
       ),
@@ -37,7 +33,7 @@ void main() {
 
 ## MaterialApp + Scaffold
 
-`MaterialApp` adds a **Navigator** and **theme**. `Scaffold` lays out the major Material components (app bar, body, FAB).
+`MaterialApp` adds a `Navigator` and a theme. `Scaffold` lays out the major Material components (app bar, body, FAB).
 
 ```dart
 import 'package:flutter/material.dart';
@@ -74,7 +70,7 @@ class TutorialHome extends StatelessWidget {
 }
 ```
 
-## pubspec — uses-material-design
+## pubspec: uses-material-design
 
 Enable the bundled Material icon font so `Icons.*` glyphs render.
 
@@ -88,12 +84,10 @@ flutter:
 
 Two bundled design languages.
 
-```dart
-// Material (Android-style):  MaterialApp, Scaffold, AppBar
-// Cupertino (iOS-style):     CupertinoApp, CupertinoNavigationBar
-```
+- Material (Android-style): `MaterialApp`, `Scaffold`, `AppBar`
+- Cupertino (iOS-style): `CupertinoApp`, `CupertinoNavigationBar`
 
-## Project Structure & Running
+## Project structure & running
 
 ```console
 $ flutter create my_app   # scaffolds the project
@@ -105,7 +99,7 @@ $ flutter run             # builds + launches on a connected device/emulator
 void main() => runApp(const MyApp());
 ```
 
-## Hot Reload vs Hot Restart
+## Hot reload vs hot restart
 
 **Debug mode only.** Both speed up iteration; they differ in what they preserve.
 
@@ -116,24 +110,18 @@ $ #                     rebuilds widget tree, PRESERVES app state)
 $ # R  → hot restart  (reloads changes and RESETS state; reruns from scratch)
 ```
 
-```dart
-// Hot reload does NOT rerun main() or initState().
-// Hot restart re-runs them.
-```
+Hot reload does not rerun `main()` or `initState()`; hot restart re-runs them.
 
 ### Hot reload limitations (need a full restart)
 
-```dart
-// - Changes to main() or initState() are NOT re-executed.
-// - enum <-> class conversions.
-// - Changed generic type parameters.
-// - Global / static field initializers are not re-run.
-//     Prefer `const` or a getter instead of a `final` static initializer.
-// - Native (platform) code changes need a full restart.
-```
+- Changes to `main()` or `initState()` are not re-executed.
+- Conversions between an enum and a class.
+- Changed generic type parameters.
+- Global and static field initializers are not re-run. Prefer `const` or a getter over a `final` static initializer.
+- Native (platform) code changes.
 
 <!-- nav -->
 ---
 
-← [Home](../README.md) · [Index](README.md) · [Flutter — Widgets & State](02-widgets.md) →
+← [Home](../README.md) · [Index](README.md) · [Flutter: Widgets & State](02-widgets.md) →
 <!-- nav -->

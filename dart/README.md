@@ -1,6 +1,6 @@
 # Dart
 
-Dart cheatsheet — 14 topics, basics → advanced. Dense, code-first; the teaching lives in the inline comments of each code block.
+Dart cheatsheet: 14 topics, basics → advanced. Dense and code-first, with the detail in the inline comments of each code block.
 
 1. [Basics](01-basics.md)
 2. [Types & Collections](02-types-collections.md)

@@ -1,10 +1,10 @@
-# PHP — Namespaces & Attributes
+# PHP: Namespaces & Attributes
 
 *Source: https://www.php.net/manual/en/language.namespaces.php*
 
 ## Declaring a namespace
 
-Must be the **first statement** in a file (only `declare` may precede it). Scopes classes, functions, and constants.
+Must be the first statement in a file (only `declare` may precede it). Scopes classes, functions, and constants.
 
 ```php
 <?php
@@ -27,7 +27,7 @@ Directory-like hierarchy, separated by `\`.
 namespace App\Http\Controllers;
 ```
 
-## `use` — importing
+## Importing with `use`
 
 ```php
 use App\Models\User;             // import a class
@@ -43,24 +43,24 @@ echo VERSION;
 
 ## Global prefix `\`
 
-Inside a namespace, unqualified names resolve to the current namespace first. Prefix with `\` to reach the **global** namespace explicitly (built-ins, root-level classes).
+Inside a namespace, unqualified names resolve to the current namespace first. Prefix with `\` to reach the global namespace explicitly (built-ins, root-level classes).
 
 ```php
 namespace App;
 
 $len = \strlen('hi');     // explicit global function
-$c = new \DateTime();     // global class — without \ PHP looks for App\DateTime
+$c = new \DateTime();     // global class: without \ PHP looks for App\DateTime
 ```
 
 ## Fallback rule
 
-Unqualified **function** and **constant** names fall back to the global namespace if not found locally. **Classes do NOT** fall back — they must be imported or `\`-prefixed.
+Unqualified function and constant names fall back to the global namespace if not found locally. Classes do NOT fall back; they must be imported or `\`-prefixed.
 
 ```php
 namespace App;
 
-echo strlen('hi');   // OK — function falls back to global \strlen
-echo PHP_EOL;        // OK — constant falls back to global
+echo strlen('hi');   // OK: function falls back to global \strlen
+echo PHP_EOL;        // OK: constant falls back to global
 
 $d = new DateTime(); // Error: Class "App\DateTime" not found (no class fallback)
 $d = new \DateTime();// OK
@@ -79,7 +79,7 @@ echo namespace\VERSION;    // current-namespace constant
 
 ## PSR-4 autoloading (Composer)
 
-Map a namespace prefix to a base directory; the **fully-qualified class name** maps to a file path. Loading `vendor/autoload.php` registers the autoloader.
+Map a namespace prefix to a base directory; the fully-qualified class name maps to a file path. Loading `vendor/autoload.php` registers the autoloader.
 
 ```php
 // composer.json
@@ -103,25 +103,25 @@ spl_autoload_register(
 
 ## PSR standards
 
-**PSRs** (PHP Standard Recommendations, by the **PHP-FIG** group) are shared interfaces and conventions that let independent libraries interoperate. You depend on the **interface** package (e.g. `psr/log`) and any compliant implementation drops in.
+**PSRs** (PHP Standard Recommendations, by the PHP-FIG group) are shared interfaces and conventions that let independent libraries interoperate. You depend on the interface package (e.g. `psr/log`) and any compliant implementation drops in.
 
 | PSR | Title | Purpose |
 |---|---|---|
-| **PSR-1** | Basic Coding Standard | fundamental code conventions (class/method naming, `<?php` tags) |
-| **PSR-12** | Extended Coding Style | full formatting rules (indentation, spacing, line length) — supersedes PSR-2 |
-| **PSR-4** | Autoloading | map namespace prefix → directory (the Composer `autoload` standard) |
-| **PSR-3** | Logger Interface | `LoggerInterface` — `$log->info()/error()/...` (pkg `psr/log`) |
-| **PSR-11** | Container Interface | DI container — `$c->get($id)` / `$c->has($id)` (`psr/container`) |
-| **PSR-6** / **PSR-16** | Caching / Simple Cache | pool+item caching / simpler `get`/`set`/`delete` (`psr/cache`, `psr/simple-cache`) |
-| **PSR-7** | HTTP Message | `RequestInterface` / `ResponseInterface` value objects (`psr/http-message`) |
-| **PSR-17** | HTTP Factories | factories that create PSR-7 objects (`psr/http-factory`) |
-| **PSR-15** | HTTP Handlers | server request handlers + middleware (`psr/http-server-handler`) |
-| **PSR-18** | HTTP Client | `$client->sendRequest($req)` (`psr/http-client`) |
-| **PSR-14** | Event Dispatcher | dispatch events to listeners (`psr/event-dispatcher`) |
-| **PSR-20** | Clock | `$clock->now()` → mockable time (`psr/clock`) |
+| PSR-1 | Basic Coding Standard | fundamental code conventions (class/method naming, `<?php` tags) |
+| PSR-12 | Extended Coding Style | full formatting rules (indentation, spacing, line length); supersedes PSR-2 |
+| PSR-4 | Autoloading | map namespace prefix → directory (the Composer `autoload` standard) |
+| PSR-3 | Logger Interface | `LoggerInterface`: `$log->info()/error()/...` (pkg `psr/log`) |
+| PSR-11 | Container Interface | DI container: `$c->get($id)` / `$c->has($id)` (`psr/container`) |
+| PSR-6 / PSR-16 | Caching / Simple Cache | pool+item caching / simpler `get`/`set`/`delete` (`psr/cache`, `psr/simple-cache`) |
+| PSR-7 | HTTP Message | `RequestInterface` / `ResponseInterface` value objects (`psr/http-message`) |
+| PSR-17 | HTTP Factories | factories that create PSR-7 objects (`psr/http-factory`) |
+| PSR-15 | HTTP Handlers | server request handlers + middleware (`psr/http-server-handler`) |
+| PSR-18 | HTTP Client | `$client->sendRequest($req)` (`psr/http-client`) |
+| PSR-14 | Event Dispatcher | dispatch events to listeners (`psr/event-dispatcher`) |
+| PSR-20 | Clock | `$clock->now()` → mockable time (`psr/clock`) |
 
 ```php
-// PSR-3 logging — code depends on the interface, not a concrete logger:
+// PSR-3 logging: code depends on the interface, not a concrete logger:
 use Psr\Log\LoggerInterface;
 function process(LoggerInterface $log): void
 {
@@ -193,5 +193,5 @@ foreach ($r->getAttributes(Route::class) as $attr) {
 <!-- nav -->
 ---
 
-← [PHP — Exceptions & Errors](10-exceptions.md) · [Index](README.md) · [PHP — Web Runtime](12-web-runtime.md) →
+← [PHP: Exceptions & Errors](10-exceptions.md) · [Index](README.md) · [PHP: Web Runtime](12-web-runtime.md) →
 <!-- nav -->

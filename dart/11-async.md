@@ -1,10 +1,10 @@
-# Dart — Async (Future, Stream, Isolate)
+# Dart: Async (Future, Stream, Isolate)
 
 *Source: https://dart.dev/libraries/async*
 
 ## Event loop / single-thread model
 
-Dart code runs in an **isolate** on a **single thread** with an event loop processing a FIFO queue. `async` APIs give **interleaved concurrency** on that one thread — not parallelism.
+Dart code runs in an **isolate** on a single thread with an event loop processing a FIFO queue. `async` APIs give interleaved concurrency on that one thread, not parallelism.
 
 ```dart
 while (eventQueue.waitForEvent()) {   // conceptual event loop
@@ -47,7 +47,7 @@ return Future.delayed(const Duration(seconds: 2),
 
 ## async / await
 
-`async` before the body makes an **async function** (returns `Future<T>`/`Future<void>`). `await` is allowed **only inside** an async function. An async fn runs **synchronously until the first `await`**.
+`async` before the body makes an async function (returns `Future<T>`/`Future<void>`). `await` is allowed only inside an async function. An async fn runs **synchronously until the first `await`**.
 
 ```dart
 void main() async { ··· }            // both forms are valid
@@ -57,7 +57,7 @@ Future<void> main() async { ··· }
 ### WRONG vs RIGHT
 
 ```dart
-// WRONG — no await: you get the Future object, not its value.
+// WRONG: no await, so you get the Future object, not its value.
 String createOrderMessage() {
   var order = fetchUserOrder();
   return 'Your order is: $order';
@@ -68,7 +68,7 @@ Future<String> fetchUserOrder() =>
 ```
 
 ```dart
-// RIGHT — await the Future inside an async fn.
+// RIGHT: await the Future inside an async fn.
 Future<String> createOrderMessage() async {
   var order = await fetchUserOrder();
   return 'Your order is: $order';
@@ -119,7 +119,7 @@ Future<String> changeUsername() async {
 
 ## Stream
 
-A **Stream\<T>** is an async sequence of events — an async `Iterable`. Pairs with `Future` (one value) for many values over time.
+A **Stream\<T>** is an async sequence of events, an async `Iterable`. Pairs with `Future` (one value) for many values over time.
 
 ### await for & async* / yield
 
@@ -149,7 +149,7 @@ void main() async {
 
 ### Error handling
 
-Wrap `await for` in `try-catch`. Most streams **stop after the first error**.
+Wrap `await for` in `try-catch`. Most streams stop after the first error.
 
 ```dart
 Future<int> sumStream(Stream<int> stream) async {
@@ -167,10 +167,8 @@ Future<int> sumStream(Stream<int> stream) async {
 
 ### Single vs broadcast
 
-```dart
-// single-subscription: exactly one listener; e.g. file I/O, a web request.
-// broadcast:           many listeners; e.g. UI / mouse events.
-```
+- Single-subscription: exactly one listener, e.g. file I/O or a web request.
+- Broadcast: many listeners, e.g. UI and mouse events.
 
 ### Transforms (return new streams)
 
@@ -183,7 +181,7 @@ stream.lastWhere((x) => x >= 0);   // + first / last / length / toList /
                                    //   forEach / reduce / fold / join
 ```
 
-### listen() — low-level
+### listen(): low-level
 
 Returns a `StreamSubscription` (`pause`/`resume`/`cancel`).
 
@@ -202,14 +200,11 @@ Programmatically create a stream and push events into it via `controller.sink.ad
 
 ## Isolates
 
-Each isolate has its **own memory** and a single-thread event loop. They communicate by **message passing** — no shared mutable state, so **no locks/mutexes and no data races** (Actor model). `async`/`await` is *not* parallel; isolates *are* (across CPU cores).
+Each isolate has its own memory and a single-thread event loop. They communicate by message passing, with no shared mutable state, so there are no locks/mutexes and no data races (Actor model). `async`/`await` is *not* parallel; isolates *are* (across CPU cores).
 
-```dart
-// Global mutable state is a SEPARATE COPY per isolate.
-// Web targets use web workers instead of isolates.
-```
+Global mutable state is a separate copy per isolate. Web targets use web workers instead of isolates.
 
-### Isolate.run — one-off background work (recommended)
+### Isolate.run: one-off background work (recommended)
 
 ```dart
 int slowFib(int n) => n <= 1 ? 1 : slowFib(n - 1) + slowFib(n - 2);
@@ -220,7 +215,7 @@ void fib40() async {
 }
 ```
 
-### Isolate.spawn — long-lived worker
+### Isolate.spawn: long-lived worker
 
 Use a long-lived isolate handling many messages over time, with `SendPort`/`ReceivePort` to pass data back and forth.
 
@@ -233,5 +228,5 @@ receivePort.listen((message) { /* results arrive here */ });
 <!-- nav -->
 ---
 
-← [Dart — Error Handling](10-error-handling.md) · [Index](README.md) · [Dart — Libraries & Packages](12-libraries-packages.md) →
+← [Dart: Error Handling](10-error-handling.md) · [Index](README.md) · [Dart: Libraries & Packages](12-libraries-packages.md) →
 <!-- nav -->

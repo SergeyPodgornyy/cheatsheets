@@ -1,4 +1,4 @@
-# Dart — Inheritance, Mixins & Enums
+# Dart: Inheritance, Mixins & Enums
 
 *Source: https://dart.dev/language/extend*
 
@@ -21,8 +21,8 @@ class SmartTelevision extends Television {
 
 Mark overrides with `@override`. Rules for a valid override:
 
-- Return type must be the **same or a subtype** (narrower).
-- Each parameter type must be the **same or a supertype** (wider).
+- Return type must be the same or a subtype (narrower).
+- Each parameter type must be the same or a supertype (wider).
 - Same number of positional parameters.
 
 ```dart
@@ -34,7 +34,7 @@ class SmartTelevision extends Television {
 
 ### covariant
 
-Use `covariant` to **narrow** a parameter type in an override (you take responsibility for the type soundness).
+Use `covariant` to narrow a parameter type in an override (you take responsibility for the type soundness).
 
 ```dart
 class Cat extends Animal {
@@ -51,7 +51,7 @@ Can't be instantiated; can be extended or implemented. Often contain abstract me
 abstract class Vehicle {
   void moveForward(int meters);   // abstract method
 }
-// Vehicle v = Vehicle();   // ERROR — can't construct an abstract class
+// Vehicle v = Vehicle();   // ERROR: can't construct an abstract class
 
 class Car extends Vehicle {
   @override
@@ -65,7 +65,7 @@ class MockVehicle implements Vehicle {
 
 ## Implicit interfaces + implements
 
-**Every class implicitly defines an interface** containing all its members. `implements` provides that interface *without* inheriting implementation — the implementing class must define **all** members.
+Every class implicitly defines an interface containing all its members. `implements` provides that interface *without* inheriting implementation, so the implementing class must define all members.
 
 ```dart
 class Point {
@@ -102,7 +102,7 @@ class A {
 
 ## Mixins
 
-Reuse code across multiple class hierarchies. Declare with `mixin`, apply with `with` (comma-separated for multiple). Mixins **can't have `extends`** and **can't declare generative constructors**.
+Reuse code across multiple class hierarchies. Declare with `mixin`, apply with `with` (comma-separated for multiple). Mixins can't have `extends` and can't declare generative constructors.
 
 ```dart
 class Musician extends Performer with Musical { }
@@ -151,7 +151,7 @@ class Virtuoso with Musician {
 
 ### on clause
 
-Restricts which types can use the mixin and sets the `super` type — use only when the mixin needs a `super` call.
+Restricts which types can use the mixin and sets the `super` type. Use it only when the mixin needs a `super` call.
 
 ```dart
 class Musician {
@@ -178,7 +178,7 @@ class Novice extends Musician { }   // used as a class
 
 ## Extension methods
 
-Add functionality to existing types without modifying them. Resolved against the **static type** of the receiver — so they fail on `dynamic`.
+Add functionality to existing types without modifying them. Resolved against the **static type** of the receiver, so they fail on `dynamic`.
 
 ```dart
 extension NumberParsing on String {
@@ -186,9 +186,9 @@ extension NumberParsing on String {
   double parseDouble() => double.parse(this);
 }
 
-print('42'.parseInt());            // 42 — after importing the extension
+print('42'.parseInt());            // 42, after importing the extension
 dynamic d = '2';
-print(d.parseInt());               // Runtime NoSuchMethodError — dynamic receiver
+print(d.parseInt());               // Runtime NoSuchMethodError: dynamic receiver
 ```
 
 Unnamed extension (library-private):
@@ -213,7 +213,7 @@ extension MyFancyList<T> on List<T> {
 
 ## Extension types
 
-A **zero-cost wrapper**: a compile-time-only interface over an existing **representation type**. No wrapper object is allocated — it's erased at runtime. Use to give a type a disciplined interface without the cost of a real wrapper class.
+A zero-cost wrapper: a compile-time-only interface over an existing **representation type**. No wrapper object is allocated; it's erased at runtime. Use to give a type a disciplined interface without the cost of a real wrapper class.
 
 ```dart
 extension type IdNumber(int id) {        // representation type int, accessed via `id`
@@ -222,13 +222,13 @@ extension type IdNumber(int id) {        // representation type int, accessed vi
 }
 
 var safeId = IdNumber(42424242);
-safeId < IdNumber(42424241);   // OK — wrapped < operator
-// safeId + 10;                // ERROR — no + operator
-// int x = safeId;             // ERROR — not assignable to int
-int x = safeId as int;         // OK — runtime cast to the representation type
+safeId < IdNumber(42424241);   // OK: wrapped < operator
+// safeId + 10;                // ERROR: no + operator
+// int x = safeId;             // ERROR: not assignable to int
+int x = safeId as int;         // OK: runtime cast to the representation type
 ```
 
-By default the representation type's members are **not** exposed — declare each one you want.
+By default the representation type's members are not exposed, so declare each one you want.
 
 **Opaque** (no `implements`) = a brand-new type, hides the representation. **Transparent** (`implements`) = also exposes the representation type's members:
 
@@ -237,19 +237,19 @@ extension type NumberT(int value) implements int {
   // inherits all int members PLUS anything declared here
   NumberT get i => this;
 }
-int v = NumberT(2);   // OK — transparent, assignable to int
+int v = NumberT(2);   // OK: transparent, assignable to int
 ```
 
-**Gotcha — unsafe abstraction:** at runtime the type is the representation type, so `is`/`as` see through it.
+**Unsafe abstraction gotcha:** at runtime the type is the representation type, so `is`/`as` see through it.
 
 ```dart
 var n = NumberE(1);
-if (n is int) print('yes');   // prints — runtime type IS int
+if (n is int) print('yes');   // prints: runtime type IS int
 ```
 
 ## Enhanced enums
 
-An enum is a special class that auto-extends `Enum` and is **sealed** (no subclassing, implementing, mixing in, or instantiating).
+An enum is a special class that auto-extends `Enum` and is `sealed` (no subclassing, implementing, mixing in, or instantiating).
 
 ```dart
 enum Color { red, green, blue }
@@ -257,13 +257,13 @@ enum Color { red, green, blue }
 final favoriteColor = Color.blue;
 if (favoriteColor == Color.blue) { print('Your favorite color is blue!'); }
 
-assert(Color.red.index == 0);     // .index — declaration order
+assert(Color.red.index == 0);     // .index: declaration order
 assert(Color.green.index == 1);
 
-List<Color> colors = Color.values;   // .values — all values in order
+List<Color> colors = Color.values;   // .values: all values in order
 assert(colors[2] == Color.blue);
 
-print(Color.blue.name);           // 'blue' — .name is the value's identifier
+print(Color.blue.name);           // 'blue'; .name is the value's identifier
 ```
 
 `switch` on an enum (warns if not all values are handled):
@@ -322,7 +322,7 @@ class MockVehicle implements Vehicle { @override void moveForward(int meters) {/
 
 ### base
 
-Disallows **implement** outside the library. Can construct and extend. Subtypes must be `base`/`final`/`sealed`.
+Disallows `implements` outside the library. Can construct and extend. Subtypes must be `base`/`final`/`sealed`.
 
 ```dart
 base class Vehicle { void moveForward(int meters) {/*...*/} }
@@ -332,7 +332,7 @@ base class Car extends Vehicle {/*...*/}
 
 ### interface
 
-Others can **implement** but not **extend**. Can construct. `abstract interface` = pure interface (implement only; abstract members allowed).
+Others can implement but not extend. Can construct. `abstract interface` = pure interface (implement only; abstract members allowed).
 
 ```dart
 interface class Vehicle { void moveForward(int meters) {/*...*/} }
@@ -359,7 +359,7 @@ class Car extends Vehicle {}
 class Truck implements Vehicle {}
 class Bicycle extends Vehicle {}
 
-// Vehicle myVehicle = Vehicle();   // ERROR — sealed is implicitly abstract
+// Vehicle myVehicle = Vehicle();   // ERROR: sealed is implicitly abstract
 Vehicle myCar = Car();              // OK
 ```
 
@@ -385,5 +385,5 @@ Disallowed: `abstract` + `sealed` (sealed is already abstract); `interface`/`fin
 <!-- nav -->
 ---
 
-← [Dart — Classes](07-classes.md) · [Index](README.md) · [Dart — Generics](09-generics.md) →
+← [Dart: Classes](07-classes.md) · [Index](README.md) · [Dart: Generics](09-generics.md) →
 <!-- nav -->

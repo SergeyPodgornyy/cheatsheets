@@ -1,4 +1,4 @@
-# Dart — Tooling, Metadata & Docs
+# Dart: Tooling, Metadata & Docs
 
 *Source: https://dart.dev/language/metadata*
 
@@ -93,7 +93,7 @@ analyzer:
     - build/**
 ```
 
-## package:test — minimal
+## package:test basics
 
 ```dart
 import 'package:test/test.dart';
@@ -111,12 +111,12 @@ void main() {
 
 | API | Example |
 | --- | --- |
-| `print` | `print('hello');` — write to stdout |
+| `print` | `print('hello');` writes to stdout |
 | `int.parse` | `int.parse('42'); // 42` (throws `FormatException` on bad input) |
 | `DateTime.now()` | `DateTime now = DateTime.now();` |
 | `Duration` | `Duration d = Duration(hours: 1, minutes: 30);` |
 | `Uri.parse` | `Uri.parse('https://dart.dev');` |
-| `RegExp` | `var re = RegExp(r'(\d+)');` — raw string for the pattern |
+| `RegExp` | `var re = RegExp(r'(\d+)');`, raw string for the pattern |
 
 ```dart
 DateTime now = DateTime.now();
@@ -128,5 +128,5 @@ re.firstMatch('abc123')?.group(1);   // '123'
 <!-- nav -->
 ---
 
-← [Dart — Libraries & Packages](12-libraries-packages.md) · [Index](README.md) · [Dart — Iterables](14-iterables.md) →
+← [Dart: Libraries & Packages](12-libraries-packages.md) · [Index](README.md) · [Dart: Iterables](14-iterables.md) →
 <!-- nav -->

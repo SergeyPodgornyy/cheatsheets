@@ -1,17 +1,15 @@
-# Flutter — Layout
+# Flutter: Layout
 
 *Source: https://docs.flutter.dev/ui/layout*
 
-## Everything Is a Widget
+## Everything is a widget
 
-Layouts are built from widgets — **compose** simple widgets into complex ones.
+Layouts are built from widgets: compose simple widgets into complex ones.
 
-```dart
-// Single-child layout widgets take a `child`:   Center, Container, Padding
-// Multi-child  layout widgets take `children`:  Row, Column, ListView, Stack
-```
+- Single-child layout widgets take a `child`: `Center`, `Container`, `Padding`
+- Multi-child layout widgets take `children`: `Row`, `Column`, `ListView`, `Stack`
 
-## App Skeletons
+## App skeletons
 
 ```dart
 // Material
@@ -57,7 +55,7 @@ const CupertinoApp(
 const Center(child: Text('Hello World'));
 ```
 
-## Row & Column
+## Row & column
 
 Lay children out along an axis. Low-level primitives; nest freely.
 
@@ -77,14 +75,12 @@ Row(
 
 ### Alignment enums
 
-```dart
-// MainAxisAlignment:  start, end, center, spaceBetween, spaceAround, spaceEvenly
-// CrossAxisAlignment: start, end, center, stretch, baseline
-```
+- `MainAxisAlignment`: `start`, `end`, `center`, `spaceBetween`, `spaceAround`, `spaceEvenly`
+- `CrossAxisAlignment`: `start`, `end`, `center`, `stretch`, `baseline`
 
-## Expanded & Flexible
+## Expanded & flexible
 
-`Expanded` fills the **available space** along the main axis (flex factor defaults to `1`).
+`Expanded` fills the available space along the main axis (flex factor defaults to `1`).
 
 ```dart
 Row(
@@ -97,10 +93,8 @@ Row(
 )
 ```
 
-```dart
-// Expanded -> forces the child to FILL its allotted share (exact size).
-// Flexible -> lets the child be SMALLER than its allotted share.
-```
+- `Expanded` forces the child to fill its allotted share (an exact size).
+- `Flexible` lets the child be smaller than its allotted share.
 
 ## mainAxisSize.min
 
@@ -116,12 +110,9 @@ Row(
 )
 ```
 
-## Overflow Warning
+## Overflow warning
 
-```dart
-// Content too large for its box -> yellow/black striped bar in debug.
-// Fix by using Expanded/Flexible, a scroll view, or constraining the child.
-```
+Content too large for its box shows a yellow and black striped bar in debug. Fix it with `Expanded`/`Flexible`, a scroll view, or by constraining the child.
 
 ## Container
 
@@ -150,7 +141,7 @@ const EdgeInsets.only(left: 8);                   // one side
 
 ## Stack
 
-Overlap widgets. First child = **base**; subsequent children are **overlaid**. Can't scroll. Place children with `Positioned` or via `alignment`.
+Overlap widgets. First child = base; subsequent children are overlaid. Can't scroll. Place children with `Positioned` or via `alignment`.
 
 ```dart
 Stack(
@@ -171,7 +162,7 @@ Stack(
 )
 ```
 
-## SizedBox, Padding, Center
+## SizedBox, padding, center
 
 ```dart
 const SizedBox(width: 16);                          // fixed-size gap / box
@@ -180,16 +171,12 @@ const Padding(padding: EdgeInsets.all(16), child: Text('padded'));
 const Center(child: Text('centered'));
 ```
 
-## Common Layout Widgets
+## Common layout widgets
 
-```dart
-// Container, GridView, ListView, Stack,
-// Scaffold, AppBar, Card, ListTile,
-// CupertinoPageScaffold, CupertinoNavigationBar
-```
+`Container`, `GridView`, `ListView`, `Stack`, `Scaffold`, `AppBar`, `Card`, `ListTile`, `CupertinoPageScaffold`, `CupertinoNavigationBar`.
 
 <!-- nav -->
 ---
 
-← [Flutter — Widgets & State](02-widgets.md) · [Index](README.md) · [Flutter — Constraints & Sizing](04-constraints.md) →
+← [Flutter: Widgets & State](02-widgets.md) · [Index](README.md) · [Flutter: Constraints & Sizing](04-constraints.md) →
 <!-- nav -->

@@ -1,8 +1,8 @@
-# Dart — Classes
+# Dart: Classes
 
 *Source: https://dart.dev/language/classes*
 
-All classes except `Null` descend from **`Object`**; every class except `Object?` has exactly one superclass (**mixin-based inheritance**).
+All classes except `Null` descend from `Object`; every class except `Object?` has exactly one superclass (mixin-based inheritance).
 
 ## Class declaration & instance variables
 
@@ -16,7 +16,7 @@ class Point {
 }
 ```
 
-Every instance variable generates an **implicit getter**. Non-`final` vars (and `late final` without an initializer) also generate an **implicit setter**.
+Every instance variable generates an implicit getter. Non-`final` vars (and `late final` without an initializer) also generate an implicit setter.
 
 ```dart
 var point = Point();
@@ -25,18 +25,18 @@ assert(point.x == 4);   // uses the implicit getter
 assert(point.y == null);
 ```
 
-**Gotcha — `this` in initializers:** a non-`late` initializer can't access `this`; a `late` one can.
+**Gotcha with `this` in initializers:** a non-`late` initializer can't access `this`; a `late` one can.
 
 ```dart
 class Point {
-  double? x = initialX;       // OK — no this
-  // double? y = this.x;      // ERROR — non-late initializer can't use this
-  late double? z = this.x;    // OK — late initializer can access this
+  double? x = initialX;       // OK: no this
+  // double? y = this.x;      // ERROR: non-late initializer can't use this
+  late double? z = this.x;    // OK: late initializer can access this
   Point(this.x, this.y);
 }
 ```
 
-`final` instance variables are set once — at declaration, via a constructor param, or in an initializer list.
+`final` instance variables are set once: at declaration, via a constructor param, or in an initializer list.
 
 ```dart
 class ProfileMark {
@@ -58,13 +58,13 @@ double distance = p.distanceTo(Point(4, 4));
 var a = p?.y;   // null-safe: if p is null, a is null (no exception)
 ```
 
-`a.runtimeType` gives the object's type — prefer `is` over `runtimeType` in production.
+`a.runtimeType` gives the object's type. Prefer `is` over `runtimeType` in production.
 
 ## Constructors
 
 ### Default constructor
 
-Generative, no args, no name — provided automatically if you declare none. Subclasses do **not** inherit the superclass's named constructors.
+Generative, no args, no name. Provided automatically if you declare none. Subclasses do not inherit the superclass's named constructors.
 
 ### Generative + initializing formals
 
@@ -74,7 +74,7 @@ Generative, no args, no name — provided automatically if you declare none. Sub
 class Point {
   double x;
   double y;
-  Point(this.x, this.y);   // initializing formals — no body needed
+  Point(this.x, this.y);   // initializing formals, no body needed
 }
 ```
 
@@ -91,7 +91,7 @@ class Point {
 
 ### Const constructors
 
-For compile-time-constant objects; **all** instance vars must be `final`.
+For compile-time-constant objects; all instance vars must be `final`.
 
 ```dart
 class ImmutablePoint {
@@ -101,7 +101,7 @@ class ImmutablePoint {
 }
 ```
 
-`const` constructors don't always create constants — used outside a const context they create a regular instance.
+`const` constructors don't always create constants: used outside a const context they create a regular instance.
 
 ### Redirecting constructors
 
@@ -117,7 +117,7 @@ class Point {
 
 ### Factory constructors
 
-Use `factory` to return a cached instance or a subtype — can't access `this`. Common for **caching / singletons**.
+Use `factory` to return a cached instance or a subtype. A factory can't access `this`. Common for caching and singletons.
 
 ```dart
 class Logger {
@@ -261,7 +261,7 @@ class Rectangle {
 
 ## Static variables & static methods
 
-Class-wide; **static variables are lazily initialized** (only on first use).
+Class-wide; static variables are lazily initialized (only on first use).
 
 ```dart
 class Queue {
@@ -325,11 +325,11 @@ class Vector {
 
 ## Abstract methods
 
-Body replaced by `;` — allowed only in abstract classes and mixins.
+Body replaced by `;`, allowed only in abstract classes and mixins.
 
 ```dart
 abstract class Doer {
-  void doSomething();   // abstract — no body
+  void doSomething();   // abstract, no body
 }
 class EffectiveDoer extends Doer {
   void doSomething() { /* provide implementation */ }
@@ -339,5 +339,5 @@ class EffectiveDoer extends Doer {
 <!-- nav -->
 ---
 
-← [Dart — Patterns & Destructuring](06-patterns-records.md) · [Index](README.md) · [Dart — Inheritance, Mixins & Enums](08-inheritance-mixins.md) →
+← [Dart: Patterns & Destructuring](06-patterns-records.md) · [Index](README.md) · [Dart: Inheritance, Mixins & Enums](08-inheritance-mixins.md) →
 <!-- nav -->

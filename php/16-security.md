@@ -1,10 +1,10 @@
-# PHP — Security
+# PHP: Security
 
 *Source: https://www.php.net/manual/en/security.php*
 
 ## Password hashing
 
-Password hashes must be **slow** and **per-password salted**. Never use `md5()`/`sha1()` — fast and unsalted, so they fall to GPU brute-force and rainbow tables.
+Password hashes must be slow and salted per password. Never use `md5()`/`sha1()`: they are fast and unsalted, so they fall to GPU brute-force and rainbow tables.
 
 ```php
 // Hash on signup. Algo + cost + salt are embedded in the output string.
@@ -16,7 +16,7 @@ $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 13]); // tune cost
 // output: $2y$12$<22-char salt><31-char hash>   ($2y$ = bcrypt, 12 = cost)
 ```
 
-Tune `cost` to ~250-350 ms per hash on your server — slow for attackers, tolerable for users.
+Tune `cost` to ~250-350 ms per hash on your server: slow for attackers, tolerable for users.
 
 ```php
 // Verify on login. Extracts salt/cost from $hash; already timing-safe.
@@ -31,14 +31,14 @@ if (password_verify($password, $hash)) {
 
 **Gotchas:**
 ```php
-// Do NOT supply your own salt — deprecated, ignored. Auto salt uses the OS CSPRNG.
+// Do NOT supply your own salt: deprecated and ignored. Auto salt uses the OS CSPRNG.
 // bcrypt truncates input at 72 bytes and STOPS at a NUL byte.
 $hash = password_hash(bin2hex($binary), PASSWORD_BCRYPT); // never feed raw binary; hex first
 ```
 
 ## Timing-safe comparison
 
-For **manual** secret/token/HMAC comparison (not needed with `password_verify`, which is already constant-time).
+For manual secret/token/HMAC comparison (not needed with `password_verify`, which is already constant-time).
 
 ```php
 if (hash_equals($expected, $provided)) { // constant-time
@@ -49,7 +49,7 @@ if (hash_equals($expected, $provided)) { // constant-time
 
 ## Secure randomness (CSPRNG)
 
-For tokens, codes, salts. Never use `rand()`/`mt_rand()`/`uniqid()` for security — predictable.
+For tokens, codes, salts. Never use `rand()`/`mt_rand()`/`uniqid()` for security; they are predictable.
 
 ```php
 $token = bin2hex(random_bytes(32));  // 256-bit hex token
@@ -71,7 +71,7 @@ $dir = $_GET['dir'] === 'DESC' ? 'DESC' : 'ASC'; // allowlist
 
 ## XSS
 
-Escape output for its **context**.
+Escape output for its context.
 
 ```php
 echo htmlspecialchars($userInput, ENT_QUOTES | ENT_HTML5, 'UTF-8'); // HTML + attributes
@@ -105,7 +105,7 @@ Embed the token as a hidden field in every state-changing form:
 
 ## Input validation
 
-Never trust ANY input — including selects, hidden fields, cookies.
+Never trust ANY input, including selects, hidden fields, and cookies.
 
 ```php
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL); // false if invalid
@@ -131,7 +131,7 @@ $arg = escapeshellarg($userInput); // if you MUST shell out
 ```
 
 ```ini
-; php.ini — disable dangerous functions
+; php.ini: disable dangerous functions
 disable_functions = exec,passthru,shell_exec,system,proc_open,popen,eval
 ```
 
@@ -166,5 +166,5 @@ Other hardening: set cookies `httponly` + `secure` + `samesite`; validate upload
 <!-- nav -->
 ---
 
-← [PHP — SPL (Standard PHP Library)](15-spl.md) · [Index](README.md) · [PHP — Dependency Injection & Reflection](17-di-reflection.md) →
+← [PHP: SPL (Standard PHP Library)](15-spl.md) · [Index](README.md) · [PHP: Dependency Injection & Reflection](17-di-reflection.md) →
 <!-- nav -->

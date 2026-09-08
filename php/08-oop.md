@@ -1,4 +1,4 @@
-# PHP — OOP
+# PHP: OOP
 
 *Source: https://www.php.net/manual/en/language.oop5.php*
 
@@ -33,7 +33,7 @@ $p = new Point()->move(1, 1);  // chain a method off `new` without wrapping pare
 
 ## Constructor & property promotion
 
-**Property promotion** declares + assigns a property straight from the constructor signature — no separate property line, no `$this->x = $x`.
+**Property promotion** declares and assigns a property straight from the constructor signature, so there is no separate property line and no `$this->x = $x`.
 
 ```php
 class PromotedPoint
@@ -65,7 +65,7 @@ class A
 
 ## Readonly properties
 
-Initialized once, only from within the **declaring scope** (usually the constructor). Any later write is an error.
+Initialized once, only from within the declaring scope (usually the constructor). Any later write is an error.
 
 ```php
 class User
@@ -88,7 +88,7 @@ echo $u->name; // Alice
 | `protected` | declaring class + subclasses          |
 | `private`   | declaring class only                  |
 
-Applies to **both** properties and methods.
+Applies to both properties and methods.
 
 ```php
 class Acct
@@ -101,7 +101,7 @@ class Acct
 
 ## Asymmetric visibility
 
-Read and write visibility can differ. Write (`set`) may be **narrower** than read; get must not be narrower than set.
+Read and write visibility can differ. Write (`set`) may be narrower than read; get must not be narrower than set.
 
 ```php
 class Example
@@ -110,24 +110,24 @@ class Example
 
     public function __construct(string $name)
     {
-        $this->name = $name;             // OK — inside the class
+        $this->name = $name;             // OK: inside the class
     }
 }
 
 $e = new Example("x");
-echo $e->name;       // OK — public read
+echo $e->name;       // OK: public read
 // $e->name = "y";   // Error: cannot write (protected set) from outside
 ```
 
 ## Property hooks
 
-Add `get`/`set` logic to a property. A **virtual** hook has no backing store (computed each access); a `set` hook can transform the value or write to its own backing value explicitly.
+Add `get`/`set` logic to a property. A virtual hook has no backing store (computed each access); a `set` hook can transform the value or write to its own backing value explicitly.
 
 ```php
 class Person
 {
     public string $fullName {
-        get => $this->firstName . ' ' . $this->lastName;  // virtual, computed — no backing field
+        get => $this->firstName . ' ' . $this->lastName;  // virtual, computed: no backing field
     }
 
     public string $firstName {
@@ -240,7 +240,7 @@ echo (new Circle(2))->describe(); // "Area: 12.56636"
 
 ## Interfaces
 
-Define a contract of method signatures. A class can `implements` **many** interfaces.
+Define a contract of method signatures. A class can `implements` many interfaces.
 
 ```php
 interface Drawable
@@ -267,7 +267,7 @@ class Box implements Drawable, Sizable
 
 ## Traits
 
-Horizontal reuse — copy methods into a class via `use`.
+Horizontal reuse: copy methods into a class via `use`.
 
 ```php
 trait Greetable
@@ -288,7 +288,7 @@ echo (new Service())->greet(); // "Hello from Service"
 
 ## Late static binding
 
-`$this` = current instance. `self::` = the **defining** class (resolved early, at compile time). `static::` = the **called** class (resolved late, at runtime).
+`$this` = current instance. `self::` = the defining class (resolved early, at compile time). `static::` = the called class (resolved late, at runtime).
 
 ```php
 class Base
@@ -303,8 +303,8 @@ class Base
     }
     public static function test()
     {
-        echo self::who();    // always "Base"   — defining class
-        echo static::who();  // runtime class   — called class
+        echo self::who();    // always "Base": the defining class
+        echo static::who();  // runtime class: the called class
     }
 }
 
@@ -338,7 +338,7 @@ class Locker
 
 ## Clone & clone-with
 
-`clone` makes a **shallow copy**. `__clone()` customizes the copy (e.g. deep-copy object properties). `clone($obj, [...])` clones then overwrites named properties.
+`clone` makes a shallow copy. `__clone()` customizes the copy (e.g. deep-copy object properties). `clone($obj, [...])` clones then overwrites named properties.
 
 ```php
 $b = clone $a;                       // shallow copy
@@ -420,7 +420,7 @@ echo $o->val; // 42
 
 ## `#[\Override]`
 
-Marks a method (or property) intended to override a parent — the engine errors if there's nothing to override (catches typos / renamed parents).
+Marks a method (or property) intended to override a parent. The engine errors if there's nothing to override, which catches typos and renamed parents.
 
 ```php
 class Animal
@@ -434,7 +434,7 @@ class Animal
 class Cat extends Animal
 {
     #[\Override]
-    public function speak(): string  // OK — parent has speak()
+    public function speak(): string  // OK: parent has speak()
     {
         return "Meow";
     }
@@ -445,5 +445,5 @@ class Cat extends Animal
 <!-- nav -->
 ---
 
-← [PHP — Arrays](07-arrays.md) · [Index](README.md) · [PHP — Enums](09-enums.md) →
+← [PHP: Arrays](07-arrays.md) · [Index](README.md) · [PHP: Enums](09-enums.md) →
 <!-- nav -->

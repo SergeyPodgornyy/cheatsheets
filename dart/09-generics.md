@@ -1,17 +1,17 @@
-# Dart — Generics
+# Dart: Generics
 
 *Source: https://dart.dev/language/generics*
 
 ## Why generics
 
-Generics give **type safety** and **reduce code duplication**. Types in angle brackets (`<...>`) parameterize a class or method. Convention for type params: `E, T, S, K, V`.
+Generics give type safety and cut down on duplicated code. Types in angle brackets (`<...>`) parameterize a class or method. Convention for type params: `E, T, S, K, V`.
 
-`List` is really `List<E>` — the element type. Declaring it lets the analyzer catch wrong-typed inserts:
+`List` is really `List<E>`, where `E` is the element type. Declaring it lets the analyzer catch wrong-typed inserts:
 
 ```dart
 var names = <String>[];
 names.addAll(['Seth', 'Kathy', 'Lars']);
-// names.add(42);   // Error — 42 is not a String
+// names.add(42);   // Error: 42 is not a String
 ```
 
 Without generics you'd need a separate `StringCache`, `IntCache`, etc.; with one `Cache<T>` the same code serves every type.
@@ -65,26 +65,26 @@ class Foo<T extends SomeBaseClass> {
 }
 
 var someBaseClassFoo = Foo<SomeBaseClass>();
-var extenderFoo      = Foo<Extender>();        // Extender is a subtype — OK
+var extenderFoo      = Foo<Extender>();        // Extender is a subtype, so OK
 
 var foo = Foo();                               // T defaults to the bound
 print(foo);                                    // Instance of 'Foo<SomeBaseClass>'
 
-// var foo = Foo<Object>();                    // fails analysis — Object isn't SomeBaseClass
+// var foo = Foo<Object>();                    // fails analysis: Object isn't SomeBaseClass
 ```
 
 ## Reified generics
 
-Dart generics are **reified** — type arguments are carried at runtime, unlike Java's type erasure.
+Dart generics are **reified**: type arguments are carried at runtime, unlike Java's type erasure.
 
 ```dart
 var names = <String>[];
 names.addAll(['Seth', 'Kathy', 'Lars']);
-print(names is List<String>);   // true — the element type survives at runtime
+print(names is List<String>);   // true: the element type survives at runtime
 ```
 
 <!-- nav -->
 ---
 
-← [Dart — Inheritance, Mixins & Enums](08-inheritance-mixins.md) · [Index](README.md) · [Dart — Error Handling](10-error-handling.md) →
+← [Dart: Inheritance, Mixins & Enums](08-inheritance-mixins.md) · [Index](README.md) · [Dart: Error Handling](10-error-handling.md) →
 <!-- nav -->

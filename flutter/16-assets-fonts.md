@@ -1,12 +1,12 @@
-# Flutter — Assets & Fonts
+# Flutter: Assets & Fonts
 
 *Source: https://docs.flutter.dev/ui/assets/assets-and-images*
 
-Assets (images, JSON, fonts) are declared in **`pubspec.yaml`** and bundled into the app at build time.
+Assets (images, JSON, fonts) are declared in `pubspec.yaml` and bundled into the app at build time.
 
 ## Declaring assets
 
-Indentation matters — `assets:` is two spaces under `flutter:`.
+Indentation matters: `assets:` is two spaces under `flutter:`.
 
 ```yaml
 flutter:
@@ -27,7 +27,7 @@ Image.network('https://example.com/pic.jpg')      // remote
 
 ## Resolution-aware images
 
-Provide `2.0x` / `3.0x` variants; Flutter picks one by device pixel ratio. Declare only the **main** asset — variants are bundled automatically.
+Provide `2.0x` / `3.0x` variants; Flutter picks one by device pixel ratio. Declare only the main asset; variants are bundled automatically.
 
 ```
 .../my_icon.png         # 1.0x baseline
@@ -83,7 +83,7 @@ Text('Hello', style: TextStyle(fontFamily: 'MyFont'));
 MaterialApp(theme: ThemeData(fontFamily: 'MyFont'));
 ```
 
-The **`google_fonts`** package fetches fonts at runtime instead of bundling them:
+The `google_fonts` package fetches fonts at runtime instead of bundling them:
 
 ```dart
 import 'package:google_fonts/google_fonts.dart';
@@ -93,5 +93,5 @@ Text('Hi', style: GoogleFonts.oswald(fontSize: 30));
 <!-- nav -->
 ---
 
-← [Flutter — Responsive & Adaptive Design](15-responsive-adaptive.md) · [Index](README.md) · [Home](../README.md) →
+← [Flutter: Responsive & Adaptive Design](15-responsive-adaptive.md) · [Index](README.md) · [Home](../README.md) →
 <!-- nav -->

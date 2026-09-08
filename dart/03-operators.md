@@ -1,4 +1,4 @@
-# Dart — Operators
+# Dart: Operators
 
 *Source: https://dart.dev/language/operators*
 
@@ -38,7 +38,7 @@ Highest → lowest. Within a row, operators associate left-to-right unless noted
 -(5);                    // unary minus
 ```
 
-Increment / decrement — prefix returns value *after* change, postfix *before*:
+Increment / decrement: prefix returns the value *after* the change, postfix *before*:
 
 ```dart
 var a = 0, b;
@@ -56,7 +56,7 @@ b = a--;   // a=-1, b=0
 ==  !=  >  <  >=  <=
 ```
 
-How `==` works: if either operand is `null`, returns `true` only when **both** are null; otherwise it invokes the `==` method on the left operand.
+How `==` works: if either operand is `null`, returns `true` only when both are null; otherwise it invokes the `==` method on the left operand.
 
 ```dart
 1 == 1;          // true
@@ -65,12 +65,12 @@ null == null;    // true
 null == 1;       // false
 ```
 
-Use **`identical(a, b)`** for object identity (Dart's equivalent of Python's `is` — same instance, not just equal value).
+Use `identical(a, b)` for object identity (Dart's equivalent of Python's `is`: same instance, not just equal value).
 
 ```dart
 var a = [1, 2], b = [1, 2];
-a == b;              // depends on List's == (false here — different instances)
-identical(a, b);     // false — distinct objects
+a == b;              // depends on List's == (false here: different instances)
+identical(a, b);     // false: distinct objects
 identical(a, a);     // true
 ```
 
@@ -79,7 +79,7 @@ identical(a, a);     // true
 ```dart
 obj is  T            // true if obj implements T's interface
 obj is! T            // negation
-obj as  T            // cast — throws if obj isn't a T (or is null)
+obj as  T            // cast, throws if obj isn't a T (or is null)
 ```
 
 ```dart
@@ -141,16 +141,16 @@ assert((value << 4) == 0x220);       // shift left
 Two operators that replace many `if-else` statements.
 
 ```dart
-// ternary — condition ? then : else
+// ternary: condition ? then : else
 var visibility = isPublic ? 'public' : 'private';
 
-// ?? — if-null: left if non-null, else right
+// ?? is if-null: left if non-null, else right
 String playerName(String? name) => name ?? 'Guest';
 ```
 
 ## Cascade `..` and `?..`
 
-Run a **sequence of operations on the same object** without repeating the receiver. The cascade expression evaluates to the *object*, not the last call's result.
+Run a sequence of operations on the same object without repeating the receiver. The cascade expression evaluates to the *object*, not the last call's result.
 
 ```dart
 var paint = Paint()
@@ -159,7 +159,7 @@ var paint = Paint()
   ..strokeWidth = 5.0;
 // equivalent to: var paint = Paint(); paint.color = ...; paint.strokeCap = ...; ...
 
-// ?.. — null-shorting cascade: use on the FIRST operation when the target may be null:
+// ?.. is the null-shorting cascade: use on the FIRST operation when the target may be null:
 querySelector('#confirm')
   ?..text = 'Confirm'
   ..classes.add('important');
@@ -170,23 +170,23 @@ querySelector('#confirm')
 ## Null-aware
 
 ```dart
-obj?.member          // conditional access — null if obj is null (no throw)
+obj?.member          // conditional access: null if obj is null (no throw)
 list?[index]         // conditional index
-expr ?? other        // if-null — expr, or other if expr is null
+expr ?? other        // if-null: expr, or other if expr is null
 x ??= value;         // assign value only if x is currently null
-expr!                // null assertion — throws at runtime if expr is null
+expr!                // null assertion: throws at runtime if expr is null
 ```
 
 ```dart
 String? name;
 name?.length         // null  (short-circuits the whole access)
 name ?? 'Guest'      // 'Guest'
-name!.length         // throws — name is null
+name!.length         // throws, name is null
 ```
 
 ## Spread
 
-Part of collection-literal syntax: `...` expands a collection, `...?` skips a null one. See **Types & Collections** for full examples.
+Part of collection-literal syntax: `...` expands a collection, `...?` skips a null one. See Types & Collections for full examples.
 
 ```dart
 var combined = [0, ...listA, ...?maybeListB, 5];
@@ -195,5 +195,5 @@ var combined = [0, ...listA, ...?maybeListB, 5];
 <!-- nav -->
 ---
 
-← [Dart — Types & Collections](02-types-collections.md) · [Index](README.md) · [Dart — Control Flow](04-control-flow.md) →
+← [Dart: Types & Collections](02-types-collections.md) · [Index](README.md) · [Dart: Control Flow](04-control-flow.md) →
 <!-- nav -->

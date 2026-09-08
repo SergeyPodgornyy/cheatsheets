@@ -1,10 +1,10 @@
-# Flutter — Networking & Async UI
+# Flutter: Networking & Async UI
 
 *Source: https://docs.flutter.dev/cookbook/networking/fetch-data*
 
-## The `http` Package
+## The `http` package
 
-Simplest way to fetch data — avoid using `dart:io` / `dart:html` directly.
+Simplest way to fetch data. Avoid using `dart:io` / `dart:html` directly.
 
 ```console
 $ flutter pub add http
@@ -20,7 +20,7 @@ Android requires the INTERNET permission in `AndroidManifest.xml`:
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-## Making a Request
+## Making a request
 
 `http.get` returns a `Future<Response>`. `Response` has `.statusCode` and `.body`.
 
@@ -35,14 +35,14 @@ Future<Album> fetchAlbum() async {
     // jsonDecode returns dynamic; cast to the expected shape.
     return Album.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
   } else {
-    throw Exception('Failed to load album'); // on non-200, THROW — don't return null
+    throw Exception('Failed to load album'); // on non-200, THROW; don't return null
   }
 }
 ```
 
-## JSON Model with `fromJson`
+## JSON model with `fromJson`
 
-Define a model and a **factory constructor** to parse a decoded map. The body uses a `switch` with a map pattern to validate shape and bind fields.
+Define a model and a factory constructor to parse a decoded map. The body uses a `switch` with a map pattern to validate shape and bind fields.
 
 ```dart
 class Album {
@@ -86,10 +86,7 @@ class _MyAppState extends State<MyApp> {
 }
 ```
 
-```dart
-// WHY NOT build()? build() runs often (every rebuild) — fetching there would
-//   spam the network. initState runs once when the State is created.
-```
+Why not `build()`? It runs on every rebuild, so fetching there would spam the network. `initState` runs once, when the `State` is created.
 
 ## FutureBuilder
 
@@ -111,7 +108,7 @@ FutureBuilder<Album>(
 
 ## StreamBuilder
 
-Same pattern, for a **continuous** source of data (`Stream`). Rebuilds on every emitted event.
+Same pattern, for a continuous source of data (`Stream`). Rebuilds on every emitted event.
 
 ```dart
 StreamBuilder<int>(
@@ -127,5 +124,5 @@ StreamBuilder<int>(
 <!-- nav -->
 ---
 
-← [Flutter — State Management](09-state-management.md) · [Index](README.md) · [Flutter — Theming & Animations](11-theming-animations.md) →
+← [Flutter: State Management](09-state-management.md) · [Index](README.md) · [Flutter: Theming & Animations](11-theming-animations.md) →
 <!-- nav -->

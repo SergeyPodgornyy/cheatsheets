@@ -1,6 +1,6 @@
 # Flutter
 
-Flutter cheatsheet — 16 topics, basics → advanced. Dense, code-first; the teaching lives in the inline comments of each code block.
+Flutter cheatsheet: 16 topics, basics → advanced. Dense and code-first, with the detail in the inline comments of each code block.
 
 1. [Basics](01-basics.md)
 2. [Widgets & State](02-widgets.md)

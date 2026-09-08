@@ -1,10 +1,10 @@
-# Dart — Patterns & Destructuring
+# Dart: Patterns & Destructuring
 
 *Source: https://dart.dev/language/patterns*
 
 ## What patterns do
 
-A pattern **matches** a value, **destructures** it, or both.
+A pattern matches a value, destructures it, or both.
 
 - **Matching** checks shape / constant / equality / type.
 - **Destructuring** breaks a value into parts and binds them to variables.
@@ -42,7 +42,7 @@ var (a, [b, c]) = ('str', [1, 2]);  // a='str', b=1, c=2
 
 ### Variable assignment
 
-Assigns to **existing** variables — enables a no-temp swap.
+Assigns to existing variables, which enables a no-temp swap.
 
 ```dart
 var (a, b) = ('left', 'right');
@@ -64,7 +64,7 @@ switch (obj) {
 
 ### for / for-in
 
-Destructure each element — e.g. `MapEntry` over a map.
+Destructure each element, e.g. `MapEntry` over a map.
 
 ```dart
 Map<String, int> hist = {'a': 23, 'b': 100};
@@ -78,7 +78,7 @@ for (var MapEntry(:key, value: count) in hist.entries) { ... }  // :key shorthan
 
 ### Logical-or `||`
 
-Matches if **any** branch matches; share one case body.
+Matches if any branch matches; share one case body.
 
 ```dart
 var isPrimary = switch (color) {
@@ -89,10 +89,10 @@ var isPrimary = switch (color) {
 
 ### Logical-and `&&`
 
-Both subpatterns must match. **Cannot bind the same name twice.**
+Both subpatterns must match. Cannot bind the same name twice.
 
 ```dart
-// case (var a, var b) && (var b, var c)  // ERROR — both bind 'b'
+// case (var a, var b) && (var b, var c)  // ERROR: both bind 'b'
 ```
 
 ### Relational
@@ -125,7 +125,7 @@ var (i as int, s as String) = record;  // i is int, s is String
 
 ### Null-check `?`
 
-Matches only if **non-null**, binds the inner value as **non-nullable**.
+Matches only if non-null, and binds the inner value as non-nullable.
 
 ```dart
 String? maybeString = 'nullable with base type String';
@@ -136,7 +136,7 @@ switch (maybeString) {
 
 ### Null-assert `!`
 
-Binds the value, **throws** if it is null.
+Binds the value, throws if it is null.
 
 ```dart
 List<String?> row = ['user', null];
@@ -163,12 +163,12 @@ Binds the matched (or destructured) value; can be typed.
 
 ```dart
 case (var a, var b):       // binds a, b
-case (int a, String b):    // typed — also matches on type
+case (int a, String b):    // typed: also matches on type
 ```
 
 ### Identifier
 
-A bare name in a **matching** context is a reference to a constant (not a new binding).
+A bare name in a matching context is a reference to a constant (not a new binding).
 
 ```dart
 const c = 1;
@@ -265,7 +265,7 @@ if (data case {'user': [String name, int age]}) {
 
 ## Sealed class exhaustive switch
 
-Algebraic data types: a `sealed` supertype lets the compiler verify the switch covers **all** subtypes (no `default` needed). See the inheritance file for `sealed`.
+Algebraic data types: a `sealed` supertype lets the compiler verify the switch covers all subtypes (no `default` needed). See the inheritance file for `sealed`.
 
 ```dart
 sealed class Shape {}
@@ -282,5 +282,5 @@ double calculateArea(Shape shape) => switch (shape) {
 <!-- nav -->
 ---
 
-← [Dart — Functions](05-functions.md) · [Index](README.md) · [Dart — Classes](07-classes.md) →
+← [Dart: Functions](05-functions.md) · [Index](README.md) · [Dart: Classes](07-classes.md) →
 <!-- nav -->

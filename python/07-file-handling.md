@@ -1,4 +1,4 @@
-# Python — File Handling
+# Python: File Handling
 
 ## Dynamic dialog
 
@@ -206,5 +206,5 @@ More: https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html
 <!-- nav -->
 ---
 
-← [Python — Modules / Packages / Libraries](06-modules.md) · [Index](README.md) · [Python — Generators, Decorators, Memoization](08-gen-decorators.md) →
+← [Python: Modules / Packages / Libraries](06-modules.md) · [Index](README.md) · [Python: Generators, Decorators, Memoization](08-gen-decorators.md) →
 <!-- nav -->

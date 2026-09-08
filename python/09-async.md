@@ -1,4 +1,4 @@
-# Python — AsyncIO
+# Python: AsyncIO
 
 Asynchronous execution does not make our code faster, but it allows us to proceed with other functions while we are waiting for a response from the previous. Sometimes asynchronous functions are referred to as **coroutines**. And coroutines are functions that can be suspended and resumed in the future.
 
@@ -87,5 +87,5 @@ async def check_status(url: str) -> dict[str, str | int]:
 <!-- nav -->
 ---
 
-← [Python — Generators, Decorators, Memoization](08-gen-decorators.md) · [Index](README.md) · [Python — OOP](10-oop.md) →
+← [Python: Generators, Decorators, Memoization](08-gen-decorators.md) · [Index](README.md) · [Python: OOP](10-oop.md) →
 <!-- nav -->

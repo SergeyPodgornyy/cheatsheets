@@ -1,4 +1,4 @@
-# Python — Modules / Packages / Libraries
+# Python: Modules / Packages / Libraries
 
 **Modules** are separate **files**.
 
@@ -112,5 +112,5 @@ speed: float = timeit('factorial(5)', globals=globals())
 <!-- nav -->
 ---
 
-← [Python — Functions](05-functions.md) · [Index](README.md) · [Python — File Handling](07-file-handling.md) →
+← [Python: Functions](05-functions.md) · [Index](README.md) · [Python: File Handling](07-file-handling.md) →
 <!-- nav -->

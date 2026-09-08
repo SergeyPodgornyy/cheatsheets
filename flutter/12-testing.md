@@ -1,21 +1,18 @@
-# Flutter — Testing
+# Flutter: Testing
 
 *Source: https://docs.flutter.dev/testing/overview*
 
-## Three Test Types
+## Three test types
 
 | Type | Tests | Tradeoff |
 | --- | --- | --- |
-| **Unit** | a single function, method, or class | fastest, cheapest; no UI / no real I/O |
-| **Widget** | a single widget in isolation | runs in a test environment, no device needed |
-| **Integration** | a complete app (or large slice) | slowest, most expensive; needs a real device/emulator |
+| Unit | a single function, method, or class | fastest, cheapest; no UI / no real I/O |
+| Widget | a single widget in isolation | runs in a test environment, no device needed |
+| Integration | a complete app (or large slice) | slowest, most expensive; needs a real device/emulator |
 
-```dart
-// Rule of thumb: many cheap unit + widget tests, fewer expensive integration tests.
-// Higher confidence costs more time and maintenance — balance accordingly.
-```
+Rule of thumb: many cheap unit and widget tests, fewer expensive integration tests. Higher confidence costs more time and maintenance, so balance accordingly.
 
-## Unit Tests
+## Unit tests
 
 Use `flutter_test` (re-exports `package:test`). `test` declares a case, `group` clusters related cases, `expect` asserts.
 
@@ -47,9 +44,9 @@ Common matchers:
 | `throwsException` | the callable throws |
 | `greaterThan(n)` | value `> n` |
 
-## Widget Tests
+## Widget tests
 
-Use `testWidgets` + a `WidgetTester`. `pumpWidget` builds the widget; **finders** locate widgets; **matchers** assert how many were found.
+Use `testWidgets` + a `WidgetTester`. `pumpWidget` builds the widget; finders locate widgets, and matchers assert how many were found.
 
 ```dart
 testWidgets('MyWidget has a title and message', (WidgetTester tester) async {
@@ -61,7 +58,7 @@ testWidgets('MyWidget has a title and message', (WidgetTester tester) async {
 });
 ```
 
-Interaction — `tap`, then `pump` to rebuild after state changes:
+Interaction: `tap`, then `pump` to rebuild after state changes:
 
 ```dart
 await tester.tap(find.byType(FloatingActionButton));
@@ -78,7 +75,7 @@ expect(find.text('1'), findsOneWidget);
 | `find.byKey(key)` | a `Key` |
 | `find.byIcon(Icons.add)` | icon data |
 
-### Match Matchers
+### Match matchers
 
 | Matcher | Passes when |
 | --- | --- |
@@ -87,15 +84,15 @@ expect(find.text('1'), findsOneWidget);
 | `findsWidgets` | one or more matches |
 | `findsNWidgets(n)` | exactly `n` matches |
 
-## Running Tests
+## Running tests
 
 ```console
 $ flutter test
 ```
 
-## Integration Tests
+## Integration tests
 
-Drive a full, running app. Use the `integration_test` package and run on a **real device or emulator** (not a headless test runtime).
+Drive a full, running app. Use the `integration_test` package and run on a real device or emulator (not a headless test runtime).
 
 ```console
 $ flutter test integration_test
@@ -104,5 +101,5 @@ $ flutter test integration_test
 <!-- nav -->
 ---
 
-← [Flutter — Theming & Animations](11-theming-animations.md) · [Index](README.md) · [Flutter — Slivers & Advanced Scrolling](13-slivers-scrolling.md) →
+← [Flutter: Theming & Animations](11-theming-animations.md) · [Index](README.md) · [Flutter: Slivers & Advanced Scrolling](13-slivers-scrolling.md) →
 <!-- nav -->

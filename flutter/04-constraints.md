@@ -1,35 +1,28 @@
-# Flutter — Constraints & Sizing
+# Flutter: Constraints & Sizing
 
 *Source: https://docs.flutter.dev/ui/layout/constraints*
 
 ## THE RULE
 
-> **Constraints go down. Sizes go up. Parent sets position.**
+> Constraints go down. Sizes go up. Parent sets position.
 
 ### The 4-step process
 
-```dart
-// 1. A widget gets CONSTRAINTS from its parent:
-//      4 doubles -> min/max width, min/max height.
-// 2. It passes constraints DOWN to its children, asking each its size.
-// 3. It POSITIONS its children (x, y) relative to itself.
-// 4. It reports its OWN size UP to the parent (within the original constraints).
-```
+1. A widget gets constraints from its parent: four doubles, min/max width and min/max height.
+2. It passes constraints down to its children, asking each its size.
+3. It positions its children (x, y) relative to itself.
+4. It reports its own size up to the parent, within the original constraints.
 
 ### Limitations
 
-```dart
-// - A widget chooses its size ONLY within the constraints its parent gave it.
-// - A widget CAN'T decide its own position on screen — its parent decides.
-// - A child's size may be IGNORED if the parent has no alignment info.
-```
+- A widget chooses its size only within the constraints its parent gave it.
+- A widget can't decide its own position on screen; its parent decides.
+- A child's size may be ignored if the parent has no alignment info.
 
-## Tight vs Loose
+## Tight vs loose
 
-```dart
-// Tight constraint -> child MUST be a specific size (no choice).
-// Loose constraint -> child CAN be anything up to a max (may be smaller).
-```
+- A tight constraint means the child must be a specific size, with no choice.
+- A loose constraint means the child can be anything up to a max, and may be smaller.
 
 ```dart
 // Loose: Container is free to be only as big as its content
@@ -48,22 +41,17 @@ Scaffold(
 )
 ```
 
-```dart
-// Center / Scaffold  -> loosen the constraints they pass down.
-// SizedBox.expand     -> tightens to fill.
-```
+`Center` and `Scaffold` loosen the constraints they pass down; `SizedBox.expand` tightens them to fill.
 
-## Three Kinds of Boxes
+## Three kinds of boxes
 
-```dart
-// 1. As big as possible      -> Center, ListView
-// 2. As big as their child   -> Transform, Opacity
-// 3. A particular size       -> Image, Text
-```
+1. As big as possible: `Center`, `ListView`
+2. As big as their child: `Transform`, `Opacity`
+3. A particular size: `Image`, `Text`
 
-## Why `width: 100` Gets Ignored
+## Why `width: 100` gets ignored
 
-`Container` defaults to **as-big-as-possible**, but honors `width`/`height` **if the incoming constraints allow it**.
+`Container` defaults to as-big-as-possible, but honors `width`/`height` if the incoming constraints allow it.
 
 ```dart
 // Screen passes TIGHT constraints -> width/height ignored, fills the screen:
@@ -81,7 +69,7 @@ Align(
 
 ## ConstrainedBox
 
-Adds **additional** constraints on top of what it receives — never overrides a tight parent.
+Adds extra constraints on top of what it receives, and never overrides a tight parent.
 
 ```dart
 // Under a tight parent these extra constraints are IGNORED.
@@ -95,21 +83,21 @@ ConstrainedBox(
 )
 ```
 
-## Summary Table
+## Summary table
 
 | Widget | Effect on constraints / sizing |
 |---|---|
-| **Screen** (root) | passes **tight** constraints — fills the device |
-| **Center** | **loosens**, then centers the child |
-| **Align** | **loosens**, then positions the child (e.g. `bottomRight`) |
-| **SizedBox.expand** | **tightens** — child forced to fill |
-| **ConstrainedBox** | adds **extra constraints**, always applied (within parent's) |
-| **LimitedBox** | limits **only when** the incoming constraint is infinite |
-| **UnconstrainedBox** | imposes **no** constraints (child may overflow → warns) |
-| **FittedBox** | **loosens**, then **scales** the (bounded) child to fit |
+| Screen (root) | passes tight constraints: the child fills the device |
+| Center | loosens, then centers the child |
+| Align | loosens, then positions the child (e.g. `bottomRight`) |
+| SizedBox.expand | tightens: the child is forced to fill |
+| ConstrainedBox | adds extra constraints, always applied (within the parent's) |
+| LimitedBox | limits only when the incoming constraint is infinite |
+| UnconstrainedBox | imposes no constraints (child may overflow → warns) |
+| FittedBox | loosens, then scales the (bounded) child to fit |
 
 <!-- nav -->
 ---
 
-← [Flutter — Layout](03-layout.md) · [Index](README.md) · [Flutter — Common Widgets](05-common-widgets.md) →
+← [Flutter: Layout](03-layout.md) · [Index](README.md) · [Flutter: Common Widgets](05-common-widgets.md) →
 <!-- nav -->

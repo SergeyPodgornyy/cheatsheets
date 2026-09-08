@@ -1,19 +1,19 @@
-# Dart — Types & Collections
+# Dart: Types & Collections
 
 *Source: https://dart.dev/language/built-in-types*
 
 ## Numbers
 
-**`int`** (up to 64 bits) and **`double`** (64-bit IEEE 754) are both subtypes of **`num`**.
+`int` (up to 64 bits) and `double` (64-bit IEEE 754) are both subtypes of `num`.
 
 ```dart
 var x = 1;               // int
-var hex = 0xDEADBEEF;    // int — hex literal
+var hex = 0xDEADBEEF;    // int, hex literal
 var y = 1.1;             // double
-var exponents = 1.42e5;  // double — 142000.0
+var exponents = 1.42e5;  // double: 142000.0
 
 num x = 1;
-x += 2.5;                // OK — num holds both int and double
+x += 2.5;                // OK: num holds both int and double
 
 double z = 1;            // == double z = 1.0 (int literal coerced to double if target is double)
 ```
@@ -47,7 +47,7 @@ assert((3 | 4) == 7);    // OR
 assert((3 & 4) == 0);    // AND
 ```
 
-`num` provides `+ - / * abs() ceil() floor()`; more in `dart:math`. **Number literals are compile-time constants:**
+`num` provides `+ - / * abs() ceil() floor()`; more in `dart:math`. Number literals are compile-time constants:
 
 ```dart
 const msPerSecond = 1000;
@@ -107,7 +107,7 @@ const aConstNum = 0;
 const aConstBool = true;
 const aConstString = 'a constant string';
 const validConstString = '$aConstNum $aConstBool $aConstString';
-// const invalid = '$aNum $aBool $aString'; // ERROR — non-const interpolated values
+// const invalid = '$aNum $aBool $aString'; // ERROR: non-const interpolated values
 ```
 
 `==` on strings checks **code-unit-sequence equivalence**.
@@ -130,7 +130,7 @@ const validConstString = '$aConstNum $aConstBool $aConstString';
 
 ## Booleans
 
-Only `true` and `false` have type **`bool`**. **No truthy/falsy** — you must check explicitly.
+Only `true` and `false` have type `bool`. There is no truthy/falsy, so you must check explicitly.
 
 ```dart
 var fullName = '';
@@ -145,12 +145,12 @@ assert(unicorn == null);           // check null explicitly
 var iMeantToDoThis = 0 / 0;
 assert(iMeantToDoThis.isNaN);      // check NaN explicitly
 
-// if ('') {}   // ERROR — a String is not a bool
+// if ('') {}   // ERROR: a String is not a bool
 ```
 
 ## Runes & grapheme clusters
 
-`runes` are the **Unicode code points** of a string. `\uXXXX` for 4-digit code points, `\u{...}` otherwise. Many user-perceived characters (emoji, flags) span multiple code points — use the **`characters`** package for grapheme clusters.
+`runes` are the **Unicode code points** of a string. `\uXXXX` for 4-digit code points, `\u{...}` otherwise. Many user-perceived characters (emoji, flags) span multiple code points, so use the `characters` package for grapheme clusters.
 
 ```dart
 import 'package:characters/characters.dart';
@@ -159,15 +159,15 @@ var hi = 'Hi 🇩🇰';
 print(hi.characters.last); // 🇩🇰 (one grapheme cluster, not raw code units)
 
 var heart = '♥';      // ♥
-var laugh = '\u{1f606}';   // 😆 — needs braces for non-4-digit value
+var laugh = '\u{1f606}';   // 😆, needs braces for a non-4-digit value
 ```
 
 ## Object / dynamic / Null / Never
 
-- **`Object`** — superclass of all Dart objects except `Null`.
-- **`dynamic`** — disables static checks; member access resolved at runtime.
-- **`Null`** — the type of `null`.
-- **`Never`** — has no values; the type of an expression that never completes (e.g. always throws).
+- `Object` is the superclass of all Dart objects except `Null`.
+- `dynamic` disables static checks; member access resolves at runtime.
+- `Null` is the type of `null`.
+- `Never` has no values; it is the type of an expression that never completes (e.g. always throws).
 - Other special types: `Enum`, `Future`/`Stream`, `Iterable`, `void`.
 
 ## Lists
@@ -182,7 +182,7 @@ assert(list[1] == 2);
 list[1] = 1;             // mutate by index
 
 var constantList = const [1, 2, 3];
-// constantList[1] = 1;  // ERROR — const list is immutable
+// constantList[1] = 1;  // ERROR: const list is immutable
 ```
 
 Trailing comma is allowed.
@@ -209,7 +209,7 @@ final constantSet = const {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatin
 
 ## Maps
 
-Key → value pairs with unique keys. `[]=` to add, `[]` to read; **missing key returns `null`**.
+Key → value pairs with unique keys. `[]=` to add, `[]` to read; missing key returns `null`.
 
 ```dart
 var gifts = {'first': 'partridge', 'second': 'turtledoves', 'fifth': 'golden rings'};
@@ -227,7 +227,7 @@ final constantMap = const {2: 'helium', 10: 'neon', 18: 'argon'};
 
 ## Records
 
-Anonymous, **immutable**, aggregate types — fixed-size, heterogeneous, typed. Use **structural typing** (shape determines type). Fields have getters, no setters. Auto-generated `==` and `hashCode`: equal if same shape and values; named-field *order* doesn't affect equality. (Records are also covered in the patterns file.)
+Anonymous, immutable, aggregate types: fixed-size, heterogeneous, and typed. They use structural typing, so the shape determines the type. Fields have getters, no setters. Auto-generated `==` and `hashCode`: equal if same shape and values; named-field *order* doesn't affect equality. (Records are also covered in the patterns file.)
 
 ```dart
 var record = ('first', a: 2, b: true, 'last'); // mixed positional + named
@@ -239,16 +239,16 @@ record2 = ('A string', 123);          // positional fields
 record3 = (a: 123, b: true);          // named fields
 ```
 
-Named fields are **part of the type**; positional field names are documentation only:
+Named fields are part of the type; positional field names are documentation only:
 
 ```dart
 ({int a, int b}) recordAB = (a: 1, b: 2);
 ({int x, int y}) recordXY = (x: 3, y: 4);
-// recordAB = recordXY;  // ERROR — named fields differ → different types
+// recordAB = recordXY;  // ERROR: named fields differ → different types
 
 (int a, int b) posAB = (1, 2);
 (int x, int y) posXY = (3, 4);
-posAB = posXY;           // OK — positional names are just documentation
+posAB = posXY;           // OK: positional names are just documentation
 ```
 
 Field access: positional via `$1`, `$2`, ...; named by name.
@@ -280,11 +280,11 @@ typedef ButtonItem = ({String label, Icon icon, void Function()? onPressed});
 var a = [1, 2, null, 4];
 var items = [0, ...a, 5];        // [0, 1, 2, null, 4, 5]
 
-// Null-aware spread — skips a null collection:
+// Null-aware spread, skips a null collection:
 List<int>? maybe = null;
 var b = [1, null, 3];
 var merged = [0, ...?maybe, ...?b, 4]; // [0, 1, null, 3, 4]
-// var x = [...maybe];           // ERROR — nullable spread needs ...?
+// var x = [...maybe];           // ERROR: nullable spread needs ...?
 ```
 
 ## Collection-if / collection-for / null-aware element
@@ -311,7 +311,7 @@ var counted = [1, for (var x = 5; x > 2; x--) x, 7]; // [1, 5, 4, 3, 7]
 var nums = [1, 2, 3, 4, 5, 6, 7];
 var evens = [0, for (var n in nums) if (n.isEven) n, 8]; // [0, 2, 4, 6, 8]
 
-// null-aware element (leaf) — `?expr` drops the slot when expr is null:
+// null-aware element (leaf): `?expr` drops the slot when expr is null:
 int? absentValue = null;
 int? presentValue = 3;
 var list = [1, ?absentValue, ?presentValue, absentValue, 5]; // [1, 3, null, 5]
@@ -320,5 +320,5 @@ var list = [1, ?absentValue, ?presentValue, absentValue, 5]; // [1, 3, null, 5]
 <!-- nav -->
 ---
 
-← [Dart — Basics](01-basics.md) · [Index](README.md) · [Dart — Operators](03-operators.md) →
+← [Dart: Basics](01-basics.md) · [Index](README.md) · [Dart: Operators](03-operators.md) →
 <!-- nav -->

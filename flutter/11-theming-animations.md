@@ -1,10 +1,10 @@
-# Flutter — Theming & Animations
+# Flutter: Theming & Animations
 
 *Source: https://docs.flutter.dev/cookbook/design/themes*
 
 ## Theming
 
-A `ThemeData` defines app-wide visuals. It most often sets **`colorScheme`** (colors) and **`textTheme`** (text styles). Apply it via `MaterialApp(theme:)`.
+A `ThemeData` defines app-wide visuals. It most often sets `colorScheme` (colors) and `textTheme` (text styles). Apply it via `MaterialApp(theme:)`.
 
 ```dart
 MaterialApp(
@@ -12,7 +12,7 @@ MaterialApp(
   theme: ThemeData(
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.purple,
-      brightness: Brightness.dark, // or Brightness.light — derives a full palette
+      brightness: Brightness.dark, // or Brightness.light; derives a full palette
     ),
     textTheme: TextTheme(
       displayLarge: const TextStyle(fontSize: 72, fontWeight: FontWeight.bold),
@@ -25,16 +25,13 @@ MaterialApp(
 )
 ```
 
-### Styling Order
+### Styling order
 
 Most-specific wins:
 
-```dart
-// widget-specific style  >  nearest Theme override  >  app theme
-// e.g. a TextStyle passed directly to a Text beats anything from the theme.
-```
+A widget-specific style beats the nearest `Theme` override, which beats the app theme. A `TextStyle` passed directly to a `Text`, for example, wins over anything the theme sets.
 
-### Reading the Theme
+### Reading the theme
 
 `Theme.of(context)` walks up the tree to the nearest `Theme` (the app theme by default).
 
@@ -50,18 +47,18 @@ Container(
 )
 ```
 
-### Overriding for a Subtree
+### Overriding for a subtree
 
-Wrap part of the tree in a `Theme` widget — either a brand-new `ThemeData`, or `copyWith` to extend the current one.
+Wrap part of the tree in a `Theme` widget, with either a brand-new `ThemeData` or `copyWith` to extend the current one.
 
 ```dart
-// Unique ThemeData — replaces everything for this subtree:
+// Unique ThemeData: replaces everything for this subtree:
 Theme(
   data: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink)),
   child: FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
 )
 
-// copyWith — inherit the app theme, override only what you pass:
+// copyWith: inherit the app theme, override only what you pass:
 Theme(
   data: Theme.of(context).copyWith(
     colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
@@ -70,7 +67,7 @@ Theme(
 )
 ```
 
-### Dark Mode
+### Dark mode
 
 ```dart
 // Build a dark palette with brightness:
@@ -88,9 +85,9 @@ MaterialApp(
 
 Two families: **implicit** (set-and-forget, you change a property) and **explicit** (you drive with a controller).
 
-### Implicit Animations
+### Implicit animations
 
-`ImplicitlyAnimatedWidget` family — store animatable props as state, change them with `setState`, and the widget **auto-animates** between old and new. Required: `duration`. Optional: `curve`.
+`ImplicitlyAnimatedWidget` family: store animatable props as state, change them with `setState`, and the widget auto-animates between old and new. Required: `duration`. Optional: `curve`.
 
 ```dart
 AnimatedContainer(
@@ -102,7 +99,7 @@ AnimatedContainer(
 )
 ```
 
-Trigger by mutating the state — no controller needed:
+Trigger by mutating the state; no controller needed:
 
 ```dart
 setState(() {
@@ -123,9 +120,9 @@ Family members:
 | `AnimatedPositioned` | position inside a `Stack` |
 | `AnimatedSwitcher` | swaps between two children with a transition |
 
-### Explicit Animations
+### Explicit animations
 
-You control timing with an **`AnimationController`**. Needs a `vsync` ticker — mix in `SingleTickerProviderStateMixin`. A **`Tween`** maps the controller's `0..1` to your value range. **Dispose the controller!**
+You control timing with an `AnimationController`. It needs a `vsync` ticker, so mix in `SingleTickerProviderStateMixin`. A `Tween` maps the controller's `0..1` to your value range. **Dispose the controller!**
 
 ```dart
 class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
@@ -142,7 +139,7 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
     animation = Tween<double>(begin: 0, end: 300).animate(controller)
       ..addListener(() {
         setState(() {
-          // animation.value changed — rebuild to show it
+          // animation.value changed, rebuild to show it
         });
       });
     controller.forward(); // start
@@ -162,7 +159,7 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    controller.dispose(); // MUST — leaks ticker otherwise
+    controller.dispose(); // MUST: leaks the ticker otherwise
     super.dispose();
   }
 }
@@ -170,7 +167,7 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
 
 ### AnimatedBuilder
 
-Auto-listens to the animation — no `addListener` / `setState` boilerplate, and only its `builder` rebuilds.
+Auto-listens to the animation, so there is no `addListener` / `setState` boilerplate, and only its `builder` rebuilds.
 
 ```dart
 AnimatedBuilder(
@@ -182,7 +179,7 @@ AnimatedBuilder(
 )
 ```
 
-### Status Listeners & Looping
+### Status listeners & looping
 
 `addStatusListener` reacts to `AnimationStatus` (`forward` / `completed` / `reverse` / `dismissed`):
 
@@ -197,7 +194,7 @@ animation = Tween<double>(begin: 0, end: 300).animate(controller)
   });
 ```
 
-### Controls & Curves
+### Controls & curves
 
 ```dart
 controller.forward(); // play forward
@@ -208,9 +205,9 @@ controller.repeat();  // loop continuously
 final curved = CurvedAnimation(parent: controller, curve: Curves.easeIn);
 ```
 
-### Built-in Transitions
+### Built-in transitions
 
-Wrap a child and drive it with an `Animation` — no manual `value` plumbing:
+Wrap a child and drive it with an `Animation`, with no manual `value` plumbing:
 
 ```dart
 // FadeTransition, SizeTransition, ScaleTransition, SlideTransition, RotationTransition
@@ -219,7 +216,7 @@ FadeTransition(opacity: animation, child: const FlutterLogo());
 
 ### Hero
 
-Shared-element transition between routes — same `tag` on both screens animates the widget across the route change:
+Shared-element transition between routes: the same `tag` on both screens animates the widget across the route change:
 
 ```dart
 Hero(tag: 'logo', child: Image.asset('logo.png'));
@@ -228,5 +225,5 @@ Hero(tag: 'logo', child: Image.asset('logo.png'));
 <!-- nav -->
 ---
 
-← [Flutter — Networking & Async UI](10-networking-async-ui.md) · [Index](README.md) · [Flutter — Testing](12-testing.md) →
+← [Flutter: Networking & Async UI](10-networking-async-ui.md) · [Index](README.md) · [Flutter: Testing](12-testing.md) →
 <!-- nav -->

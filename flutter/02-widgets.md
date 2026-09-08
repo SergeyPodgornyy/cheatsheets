@@ -1,15 +1,15 @@
-# Flutter — Widgets & State
+# Flutter: Widgets & State
 
 *Source: https://docs.flutter.dev/ui/widgets-intro*
 
 ## StatelessWidget
 
-Receives args from its parent, stores them in **`final` fields**, and uses them in `build()` to derive output. Fields in any `Widget` subclass are **always `final`**.
+Receives args from its parent, stores them in `final` fields, and uses them in `build()` to derive output. Fields in any `Widget` subclass are always `final`.
 
 ```dart
 class Greeting extends StatelessWidget {
   const Greeting({super.key, required this.name});
-  final String name; // final — immutable config from parent
+  final String name; // final: immutable config from parent
 
   @override
   Widget build(BuildContext context) => Text('Hello, $name!');
@@ -18,7 +18,7 @@ class Greeting extends StatelessWidget {
 
 ## StatefulWidget + State
 
-Mutable state lives in a separate **`State`** object. `createState()` wires the two together.
+Mutable state lives in a separate `State` object. `createState()` wires the two together.
 
 ```dart
 class Counter extends StatefulWidget {
@@ -53,16 +53,14 @@ class _CounterState extends State<Counter> {
 }
 ```
 
-## The Two-Object Model
+## The two-object model
 
-```dart
-// Widget object  -> TEMPORARY. Recreated cheaply on every rebuild. Holds config.
-// State object   -> PERSISTS across build() calls. Holds mutable data.
-```
+- Widget object: temporary. Recreated cheaply on every rebuild, holds config.
+- `State` object: persists across `build()` calls, holds mutable data.
 
-- `createState()` is called the **first time** a widget appears at a location in the tree.
-- If the parent rebuilds with the **same runtimeType (+ same key)**, the framework **reuses** the existing `State` object.
-- Access the (possibly new) widget's props from `State` via the **`widget`** property.
+- `createState()` is called the first time a widget appears at a location in the tree.
+- If the parent rebuilds with the same runtimeType and the same key, the framework reuses the existing `State` object.
+- Access the (possibly new) widget's props from `State` via the `widget` property.
 
 ```dart
 class _ProductState extends State<ProductView> {
@@ -71,9 +69,9 @@ class _ProductState extends State<ProductView> {
 }
 ```
 
-## Lifting State Up (Callbacks)
+## Lifting state up (callbacks)
 
-A child doesn't mutate its own state — it **calls a parent callback**. **Change flows up** via callbacks; **state flows down** to stateless presentation widgets. The common parent's `State` redirects.
+A child doesn't mutate its own state; it calls a parent callback. Change flows up via callbacks, state flows down to stateless presentation widgets. The common parent's `State` redirects.
 
 ```dart
 typedef CartChangedCallback = void Function(Product product, bool inCart);
@@ -126,7 +124,7 @@ class _ShoppingListState extends State<ShoppingList> {
 
 ## BuildContext
 
-A handle to **where** in the tree a build is happening — lets lookups find ancestor data (e.g. the right theme).
+A handle to where in the tree a build is happening, which lets lookups find ancestor data (e.g. the right theme).
 
 ```dart
 Theme.of(context).primaryColor; // walks up from this context to nearest Theme
@@ -159,25 +157,21 @@ class _MyState extends State<MyWidget> {
 
 ## Keys
 
-Keys control **which widgets the framework matches** on rebuild.
+Keys control which widgets the framework matches on rebuild.
 
-```dart
-// Default match  = runtimeType + position/order among siblings.
-// With a key     = match requires same key AND same runtimeType.
-// Use when reordering a list of same-type widgets to PRESERVE their state.
-```
+By default the framework matches on `runtimeType` plus position among siblings. With a key, the match requires the same key and the same `runtimeType`. Use keys when reordering a list of same-type widgets so their state is preserved.
 
 | Key | Scope / use |
 |---|---|
-| `ValueKey(v)` | local — keyed by a value (`ValueKey('a')`) |
-| `ObjectKey(o)` | local — keyed by object identity (`ObjectKey(product)`) |
-| `UniqueKey()` | local — guaranteed unique among siblings |
+| `ValueKey(v)` | local, keyed by a value (`ValueKey('a')`) |
+| `ObjectKey(o)` | local, keyed by object identity (`ObjectKey(product)`) |
+| `UniqueKey()` | local, guaranteed unique among siblings |
 | `GlobalKey()` | globally unique; can retrieve a widget's `State` from anywhere |
 
-Local keys must be unique **among siblings**; a `GlobalKey` is unique across the whole app.
+Local keys must be unique among siblings; a `GlobalKey` is unique across the whole app.
 
 <!-- nav -->
 ---
 
-← [Flutter — Basics](01-basics.md) · [Index](README.md) · [Flutter — Layout](03-layout.md) →
+← [Flutter: Basics](01-basics.md) · [Index](README.md) · [Flutter: Layout](03-layout.md) →
 <!-- nav -->

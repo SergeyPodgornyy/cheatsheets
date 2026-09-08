@@ -1,10 +1,10 @@
-# PHP — Database (PDO) & Tooling
+# PHP: Database (PDO) & Tooling
 
 *Source: https://www.php.net/manual/en/book.pdo.php*
 
-## PDO — connect
+## Connecting with PDO
 
-`new PDO($dsn, $user, $pass, $options)`. **Always** set `ERRMODE_EXCEPTION` so failures throw instead of returning silent `false`.
+`new PDO($dsn, $user, $pass, $options)`. Always set `ERRMODE_EXCEPTION` so failures throw instead of returning silent `false`.
 
 ```php
 $options = [
@@ -16,7 +16,7 @@ $options = [
 try {
     $dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass, $options);
 } catch (PDOException $e) {
-    // handle here — an UNCAUGHT PDOException can leak connection details (user/pass) in the trace
+    // handle here: an UNCAUGHT PDOException can leak connection details (user/pass) in the trace
     echo 'Connection failed';
 }
 ```
@@ -31,7 +31,7 @@ DSN examples:
 
 ## Prepared statements
 
-Bind data separately from SQL — **the way to prevent SQL injection**. Values are never parsed as SQL.
+Bind data separately from SQL. This is the way to prevent SQL injection: values are never parsed as SQL.
 
 ```php
 // Named placeholders:
@@ -43,13 +43,13 @@ $stmt = $dbh->prepare('SELECT * FROM users WHERE status = ? AND age > ?');
 $stmt->execute(['active', 18]);                          // order matches the ?'s
 ```
 
-Never interpolate input into SQL strings — `"... WHERE name = '$name'"` is injectable.
+Never interpolate input into SQL strings: `"... WHERE name = '$name'"` is injectable.
 
 ### bindValue vs bindParam
 
 ```php
 $stmt->bindValue(':name', $name, PDO::PARAM_STR);  // captures VALUE at bind time
-$stmt->bindParam(':age', $age, PDO::PARAM_INT);    // binds VARIABLE by reference — read at execute()
+$stmt->bindParam(':age', $age, PDO::PARAM_INT);    // binds VARIABLE by reference, read at execute()
 
 $age = 21;
 $stmt->execute();   // bindParam sees 21 (latest value); bindValue would have used the old value
@@ -84,8 +84,8 @@ $count = $dbh->query('SELECT COUNT(*) FROM users')->fetchColumn();
 |---|---|
 | `PDO::FETCH_ASSOC` | Array keyed by column name |
 | `PDO::FETCH_NUM` | Array keyed by 0-based column index |
-| `PDO::FETCH_BOTH` | Both assoc + numeric keys (**default**) |
-| `PDO::FETCH_OBJ` | `stdClass` — `$row->name` |
+| `PDO::FETCH_BOTH` | Both assoc + numeric keys (default) |
+| `PDO::FETCH_OBJ` | `stdClass`, e.g. `$row->name` |
 | `PDO::FETCH_CLASS` | Instance of a named class (cols mapped to properties) |
 
 ## query() vs exec()
@@ -122,9 +122,9 @@ $json = json_encode(['name' => 'Bob', 'age' => 30]);  // '{"name":"Bob","age":30
 $json = json_encode($data, JSON_PRETTY_PRINT);         // indented, human-readable
 
 $data = json_decode($json, true);   // true => assoc ARRAY
-$obj  = json_decode($json);         // omit => stdClass — $obj->name
+$obj  = json_decode($json);         // omit => stdClass, so $obj->name
 
-// json_decode returns null on error by default — check json_last_error(), or force throwing:
+// json_decode returns null on error by default, so check json_last_error(), or force throwing:
 $data = json_decode($json, true, flags: JSON_THROW_ON_ERROR);  // throws JsonException on bad JSON
 ```
 
@@ -132,7 +132,7 @@ $data = json_decode($json, true, flags: JSON_THROW_ON_ERROR);  // throws JsonExc
 
 ```php
 $now = new DateTime();                       // mutable, "now"
-$d   = new DateTimeImmutable('2024-01-15');  // immutable — PREFER this
+$d   = new DateTimeImmutable('2024-01-15');  // immutable, PREFER this
 
 echo $d->format('Y-m-d H:i:s');              // '2024-01-15 00:00:00'
 $d2  = $d->modify('+1 day');                 // immutable: returns a NEW instance ($d unchanged)
@@ -147,31 +147,31 @@ $ts = strtotime('2024-01-15'); // parse text -> timestamp (int)
 
 ### `format()` characters
 
-Pass these to `format()` / `date()`. Each letter is a code; **unknown chars print as-is**; escape a letter with `\` to print it literally.
+Pass these to `format()` / `date()`. Each letter is a code; unknown chars print as-is; escape a letter with `\` to print it literally.
 
 **Day / week**
 
 | Char | Meaning | Example |
 |---|---|---|
-| `d` | day of month, 2-digit | `01`–`31` |
-| `j` | day of month, no leading zero | `1`–`31` |
-| `D` | weekday, short text | `Mon`–`Sun` |
-| `l` | weekday, full text | `Sunday`–`Saturday` |
-| `N` | ISO weekday number | `1` (Mon)–`7` (Sun) |
-| `w` | weekday number | `0` (Sun)–`6` (Sat) |
+| `d` | day of month, 2-digit | `01`-`31` |
+| `j` | day of month, no leading zero | `1`-`31` |
+| `D` | weekday, short text | `Mon`-`Sun` |
+| `l` | weekday, full text | `Sunday`-`Saturday` |
+| `N` | ISO weekday number | `1` (Mon) to `7` (Sun) |
+| `w` | weekday number | `0` (Sun) to `6` (Sat) |
 | `S` | ordinal suffix (pairs with `j`) | `st` `nd` `rd` `th` |
-| `z` | day of year | `0`–`365` |
+| `z` | day of year | `0`-`365` |
 | `W` | ISO week number of year | `42` |
 
 **Month / year**
 
 | Char | Meaning | Example |
 |---|---|---|
-| `m` | month, 2-digit | `01`–`12` |
-| `n` | month, no leading zero | `1`–`12` |
-| `M` | month, short text | `Jan`–`Dec` |
-| `F` | month, full text | `January`–`December` |
-| `t` | days in the month | `28`–`31` |
+| `m` | month, 2-digit | `01`-`12` |
+| `n` | month, no leading zero | `1`-`12` |
+| `M` | month, short text | `Jan`-`Dec` |
+| `F` | month, full text | `January`-`December` |
+| `t` | days in the month | `28`-`31` |
 | `Y` | year, 4-digit | `2024` |
 | `y` | year, 2-digit | `24` |
 | `L` | is leap year? | `1` / `0` |
@@ -180,13 +180,13 @@ Pass these to `format()` / `date()`. Each letter is a code; **unknown chars prin
 
 | Char | Meaning | Example |
 |---|---|---|
-| `H` | hour 24h, 2-digit | `00`–`23` |
-| `G` | hour 24h, no leading zero | `0`–`23` |
-| `h` | hour 12h, 2-digit | `01`–`12` |
-| `g` | hour 12h, no leading zero | `1`–`12` |
-| `i` | minutes, 2-digit | `00`–`59` |
-| `s` | seconds, 2-digit | `00`–`59` |
-| `a` / `A` | am/pm — lower / upper | `am` / `PM` |
+| `H` | hour 24h, 2-digit | `00`-`23` |
+| `G` | hour 24h, no leading zero | `0`-`23` |
+| `h` | hour 12h, 2-digit | `01`-`12` |
+| `g` | hour 12h, no leading zero | `1`-`12` |
+| `i` | minutes, 2-digit | `00`-`59` |
+| `s` | seconds, 2-digit | `00`-`59` |
+| `a` / `A` | am/pm, lower / upper | `am` / `PM` |
 | `u` / `v` | microseconds / milliseconds | `654321` / `654` |
 
 **Timezone / full**
@@ -204,19 +204,19 @@ Pass these to `format()` / `date()`. Each letter is a code; **unknown chars prin
 ```php
 $d->format('Y-m-d H:i:s');   // 2024-01-15 13:45:30
 $d->format('D, d M Y');      // Mon, 15 Jan 2024
-$d->format('l \t\h\e jS');   // Monday the 15th   — \t \h \e escape letters to print literally
+$d->format('l \t\h\e jS');   // Monday the 15th; \t \h \e escape letters to print literally
 $d->format('g:i A');         // 1:45 PM
 ```
 
 ### Parsing with `createFromFormat()`
 
-Same letters, but they describe the **input**. Without a control char, **fields you don't parse default to the current date/time** — usually a bug.
+Same letters, but they describe the input. Without a control char, fields you don't parse default to the current date and time, which is usually a bug.
 
 | Char | Effect when parsing |
 |---|---|
-| `!` | reset **all** fields to the Unix epoch first; then apply parsed fields (→ clean zeroed time) |
-| `\|` | reset fields **not yet parsed** to the epoch (put at the end) |
-| `\` | escape — treat the next char as a literal, not a code |
+| `!` | reset all fields to the Unix epoch first; then apply parsed fields (→ clean zeroed time) |
+| `\|` | reset fields not yet parsed to the epoch (put at the end) |
+| `\` | escape: treat the next char as a literal, not a code |
 | `*` | skip input up to the next separator |
 | `+` | tolerate trailing data (warning instead of failure) |
 
@@ -248,7 +248,7 @@ preg_match_all('/\d+/', 'a1b22', $m);  // 2; $m[0] === ['1','22'] (all matches)
 preg_replace('/\s+/', ' ', $text);     // collapse runs of whitespace to a single space
 preg_replace_callback('/\d+/', fn($m) => $m[0] * 2, 'a3b'); // "a6b"
 preg_split('/,\s*/', 'a, b,c');        // ['a', 'b', 'c']
-preg_quote('a.b*c');                   // 'a\.b\*c' — escape user input before embedding
+preg_quote('a.b*c');                   // 'a\.b\*c', escape user input before embedding
 ```
 
 ### Metacharacters
@@ -258,12 +258,12 @@ preg_quote('a.b*c');                   // 'a\.b\*c' — escape user input before
 | `.` | any single char (except newline, unless `s` flag) |
 | `^` | start of string (or line, with `m` flag) |
 | `$` | end of string (or line, with `m`) |
-| `\|` | alternation — `cat\|dog` matches either |
-| `( )` | **capturing** group → fills `$m[1]`, `$m[2]`, … |
-| `(?: )` | **non-capturing** group (group, but don't capture) |
-| `(?<name> )` | **named** group → `$m['name']` |
-| `[ ]` | character class — any one char inside |
-| `[^ ]` | negated class — any char **not** inside |
+| `\|` | alternation: `cat\|dog` matches either |
+| `( )` | capturing group → fills `$m[1]`, `$m[2]`, … |
+| `(?: )` | non-capturing group (group, but don't capture) |
+| `(?<name> )` | named group → `$m['name']` |
+| `[ ]` | character class: any one char inside |
+| `[^ ]` | negated class: any char not inside |
 | `\` | escape the next metachar (`\.` = literal dot) |
 
 ### Quantifiers (how many of the preceding token)
@@ -276,11 +276,11 @@ preg_quote('a.b*c');                   // 'a\.b\*c' — escape user input before
 | `{n}` | exactly `n` |
 | `{n,}` | `n` or more |
 | `{n,m}` | between `n` and `m` |
-| `*?` `+?` `??` `{n,m}?` | **lazy** (append `?`) — match as **few** as possible (default is **greedy** = as many as possible) |
+| `*?` `+?` `??` `{n,m}?` | lazy (append `?`): match as few as possible; the default is greedy, as many as possible |
 
 ```php
-preg_match('/a.*c/',  'aXcYc', $m);  // $m[0] === 'aXcYc'  (greedy — to the LAST c)
-preg_match('/a.*?c/', 'aXcYc', $m);  // $m[0] === 'aXc'    (lazy — to the FIRST c)
+preg_match('/a.*c/',  'aXcYc', $m);  // $m[0] === 'aXcYc'  (greedy: to the LAST c)
+preg_match('/a.*?c/', 'aXcYc', $m);  // $m[0] === 'aXc'    (lazy: to the FIRST c)
 ```
 
 ### Character-class shorthands
@@ -290,18 +290,18 @@ preg_match('/a.*?c/', 'aXcYc', $m);  // $m[0] === 'aXc'    (lazy — to the FIRS
 | `\d` | digit `[0-9]` | `\D` non-digit |
 | `\w` | word char `[A-Za-z0-9_]` | `\W` non-word |
 | `\s` | whitespace (space/tab/newline) | `\S` non-whitespace |
-| `\b` | word **boundary** (zero-width) | `\B` non-boundary |
+| `\b` | word boundary (zero-width) | `\B` non-boundary |
 | `[a-z]` | range inside a class | `[^a-z]` not in range |
 
-### Anchors & look-arounds (zero-width — assert, consume nothing)
+### Anchors & look-arounds (zero-width: they assert, consume nothing)
 
 | Token | Asserts |
 |---|---|
-| `\A` / `\z` | start / end of **whole** string (ignore `m`) |
-| `(?= )` | **lookahead** — followed by … |
-| `(?! )` | **negative lookahead** — not followed by … |
-| `(?<= )` | **lookbehind** — preceded by … |
-| `(?<! )` | **negative lookbehind** — not preceded by … |
+| `\A` / `\z` | start / end of whole string (ignore `m`) |
+| `(?= )` | lookahead: followed by … |
+| `(?! )` | negative lookahead: not followed by … |
+| `(?<= )` | lookbehind: preceded by … |
+| `(?<! )` | negative lookbehind: not preceded by … |
 
 ```php
 preg_match('/\d+(?= USD)/', '50 USD', $m); // $m[0]==='50' (number only IF followed by " USD")
@@ -312,16 +312,16 @@ preg_match('/(?<=\$)\d+/', '$50', $m);      // $m[0]==='50' (digits preceded by 
 
 | Flag | Effect |
 |---|---|
-| `i` | case-**insensitive** |
-| `m` | **multiline** — `^`/`$` match at each line break |
-| `s` | **dotall** — `.` also matches newline |
-| `x` | **extended** — ignore whitespace in pattern, allow `#` comments |
-| `u` | treat pattern + subject as **UTF-8** (always use for Unicode) |
-| `U` | **ungreedy** — invert greedy/lazy (`*` becomes lazy) |
+| `i` | case-insensitive |
+| `m` | multiline: `^`/`$` match at each line break |
+| `s` | dotall: `.` also matches newline |
+| `x` | extended: ignore whitespace in the pattern, allow `#` comments |
+| `u` | treat pattern + subject as UTF-8 (always use for Unicode) |
+| `U` | ungreedy: invert greedy/lazy (`*` becomes lazy) |
 
 ```php
-preg_match('/^cafe$/i', 'CAFE');       // 1 — case-insensitive
-preg_match('/^b$/m', "a\nb\nc");        // 1 — ^/$ per line
+preg_match('/^cafe$/i', 'CAFE');       // 1, case-insensitive
+preg_match('/^b$/m', "a\nb\nc");        // 1, ^/$ per line
 preg_match('/café/u', 'café');          // use u for multibyte text
 ```
 
@@ -375,7 +375,7 @@ require 'vendor/autoload.php';   // load Composer's PSR-4 autoloader
 }
 ```
 
-Strict typing — put at the very top of each file (first statement):
+Strict typing goes at the very top of each file, as the first statement:
 
 ```php
 declare(strict_types=1);   // disable scalar type coercion in this file: TypeError instead of silent cast
@@ -390,11 +390,11 @@ gettype($x);     // 'integer' | 'string' | 'array' ...
 isset($x); empty($x); unset($x);
 is_null($x); is_int($x); is_string($x); is_array($x); is_callable($x);
 
-error_reporting(E_ALL); ini_set('display_errors', '1');  // dev only — never on in production
+error_reporting(E_ALL); ini_set('display_errors', '1');  // dev only, never on in production
 ```
 
 <!-- nav -->
 ---
 
-← [PHP — Web Runtime](12-web-runtime.md) · [Index](README.md) · [PHP — Generators & Iteration](14-generators-iteration.md) →
+← [PHP: Web Runtime](12-web-runtime.md) · [Index](README.md) · [PHP: Generators & Iteration](14-generators-iteration.md) →
 <!-- nav -->

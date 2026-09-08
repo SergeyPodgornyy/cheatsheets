@@ -1,4 +1,4 @@
-# Python — Dependencies
+# Python: Dependencies
 
 To enable `ensurepip`, on Debian/Ubuntu systems, you need to install the `python3-venv` package using the following command:
 
@@ -39,13 +39,13 @@ $ echo "<package>" >> requirements.in
 $ pip freeze > requirements.in
 ```
 
-## Adding Hashes from the `requirements.in` file
+## Adding hashes from the `requirements.in` file
 
 ```console
 $ pip-compile --generate-hashes
 ```
 
-## Adding Hashes from `pyproject.toml` file
+## Adding hashes from `pyproject.toml` file
 
 ```console
 $ pip-compile -o requirements.txt pyproject.toml
@@ -68,5 +68,5 @@ $ mypy main.py
 <!-- nav -->
 ---
 
-← [Python — Exceptions](11-exceptions.md) · [Index](README.md) · [Home](../README.md) →
+← [Python: Exceptions](11-exceptions.md) · [Index](README.md) · [Home](../README.md) →
 <!-- nav -->

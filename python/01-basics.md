@@ -1,8 +1,8 @@
-# Python — Basics
+# Python: Basics
 
 ## Language
 
-Python is an **interpreted** language: it executes line by line and doesn't need to be compiled. Python is a **dynamically typed** language — it allows us to freely use and change variable types during runtime; types of the variables are going to be checked during the runtime, not at the compile time. We are also not required to explicitly give the data type. All type errors will be detected only during the execution later.
+Python is an **interpreted** language: it executes line by line and doesn't need to be compiled. Python is a **dynamically typed** language, it allows us to freely use and change variable types during runtime; types of the variables are going to be checked during the runtime, not at the compile time. We are also not required to explicitly give the data type. All type errors will be detected only during the execution later.
 
 Python provides us with **high-level** abstractions between the programmer and the computer. It makes it easier to program by making the code more human-readable.
 
@@ -158,7 +158,7 @@ amount: number = fetch()
 hidden: str = '*' * 10 # **********
 ```
 
-## Lists — collection
+## Lists: collection
 
 ```python
 empty: list = []
@@ -177,7 +177,7 @@ people.sort()                      # ['Luigi', 'Mario']
 people.reverse()                   # ['Mario', 'Luigi']
 ```
 
-## Tuples — immutable collection
+## Tuples: immutable collection
 
 ```python
 empty: tuple = tuple()
@@ -195,7 +195,7 @@ coordinates.index(1.5)  # 0 -> find the first position of value in tuple
 coordinates[0] = 2.5    # TypeError: 'tuple' object does not support item assignment
 ```
 
-## Sets — collection of unique values
+## Sets: collection of unique values
 
 ```python
 # set can't have duplicates, but values are unordered
@@ -229,7 +229,7 @@ things: frozenset = frozenset({1, 1, 2, 3, 3})
 print(things) # frozenset({1, 2, 3})
 ```
 
-## Dictionaries — hash-table
+## Dictionaries: hash-table
 
 ```python
 empty: dict = dict()
@@ -287,5 +287,5 @@ empty: None = None
 <!-- nav -->
 ---
 
-← [Home](../README.md) · [Index](README.md) · [Python — Operators](02-operators.md) →
+← [Home](../README.md) · [Index](README.md) · [Python: Operators](02-operators.md) →
 <!-- nav -->

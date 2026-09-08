@@ -1,12 +1,12 @@
-# PHP — Dependency Injection & Reflection
+# PHP: Dependency Injection & Reflection
 
 *Source: https://www.php.net/manual/en/class.reflectionclass.php*
 
 ## DEPENDENCY INJECTION
 
-**DI** = give an object its dependencies from **outside** instead of creating them inside. Decouples code, makes testing/mocking trivial.
+**DI** = give an object its dependencies from outside instead of creating them inside. Decouples code, makes testing/mocking trivial.
 
-### NOT DI — hard-wired dependency
+### Not DI: hard-wired dependency
 
 The class builds its own `PDO` internally: tightly coupled, can't swap the DB or mock it in tests.
 
@@ -17,7 +17,7 @@ class UserService
 
     public function __construct()
     {
-        // tightly coupled — caller has no say, tests hit a real DB
+        // tightly coupled: caller has no say, tests hit a real DB
         $this->db = new PDO('mysql:host=localhost;dbname=app', 'u', 'p');
     }
 }
@@ -25,7 +25,7 @@ class UserService
 
 ### Constructor injection (preferred)
 
-Dependencies are **explicit + required** — you can't construct the object without them. Promoted params keep it terse.
+Dependencies are explicit and required: you can't construct the object without them. Promoted params keep it terse.
 
 ```php
 class UserService
@@ -51,7 +51,7 @@ $service = new UserService($pdo, $logger);
 
 ### Setter / method injection
 
-For **optional** dependencies — set after construction.
+For optional dependencies, set after construction.
 
 ```php
 class UserService
@@ -67,7 +67,7 @@ class UserService
 
 ### Depend on interfaces, not concretions
 
-Type-hint the **interface** so any implementation drops in — swap transports, mock in tests.
+Type-hint the interface so any implementation drops in: swap transports, mock in tests.
 
 ```php
 class Mailer
@@ -86,8 +86,8 @@ A **container** builds + wires objects for you, resolving the whole dependency g
 ```php
 use Psr\Container\ContainerInterface;
 // ContainerInterface:
-//   get(string $id): mixed   — return entry for $id (constructs deps recursively)
-//   has(string $id): bool    — does an entry exist for $id?
+//   get(string $id): mixed   returns the entry for $id (constructs deps recursively)
+//   has(string $id): bool    does an entry exist for $id?
 
 $service = $container->get(UserService::class); // builds PDO + Logger + UserService
 $container->has(LoggerInterface::class);         // true / false
@@ -98,7 +98,7 @@ $container->has(LoggerInterface::class);         // true / false
 | `get(string $id): mixed` | resolve + return the entry; constructs dependencies recursively |
 | `has(string $id): bool` | whether the container can resolve `$id` |
 
-**Autowiring**: many containers use **Reflection** to read constructor parameter types and resolve them automatically — no manual wiring. Popular containers: **PHP-DI**, **Symfony DI**, **Laravel container**.
+**Autowiring**: many containers use Reflection to read constructor parameter types and resolve them automatically, with no manual wiring. Popular containers are PHP-DI, Symfony DI, and the Laravel container.
 
 ### Manual mini-container
 
@@ -138,7 +138,7 @@ $svc = $c->get(UserService::class); // wires PDO + UserService automatically
 
 ## REFLECTION
 
-**Reflection** = inspect and manipulate classes, methods, properties, functions, and attributes at **runtime**.
+**Reflection** = inspect and manipulate classes, methods, properties, functions, and attributes at runtime.
 
 ### ReflectionClass
 
@@ -167,7 +167,7 @@ $rc->getMethods(ReflectionMethod::IS_PUBLIC); // public methods only
 | Method | Description |
 |---|---|
 | `getName()` | class name, e.g. `"Dog"` |
-| `isAbstract()` | bool — is it `abstract`? |
+| `isAbstract()` | bool: is it `abstract`? |
 | `getParentClass()` | `ReflectionClass` of parent, or `false` |
 | `getInterfaceNames()` | `string[]` of implemented interfaces |
 | `getConstants()` | `['SOUND' => 'woof']` |
@@ -186,15 +186,15 @@ echo $rm->invoke($dog);   // call speak() on the $dog instance
 $rm->invokeArgs($dog, []); // call with an args array
 ```
 
-### ReflectionProperty — read/write, even non-public
+### ReflectionProperty: read/write, even non-public
 
-Reflection **bypasses visibility** — reads and writes `private`/`protected` members.
+Reflection bypasses visibility: it reads and writes `private`/`protected` members.
 
 ```php
 $rp = new ReflectionProperty(Dog::class, 'age'); // protected property
 
 echo $rp->getValue($dog); // read
-$rp->setValue($dog, 5);   // write — bypasses visibility
+$rp->setValue($dog, 5);   // write, bypasses visibility
 $rp->getType();           // ReflectionNamedType
 ```
 
@@ -222,13 +222,13 @@ echo $rf->invokeArgs(['Ann', 2]); // call the function with an args array
 $type = $param->getType();
 
 $type->getName();    // "array"
-$type->allowsNull(); // bool — true if declared as ?type
+$type->allowsNull(); // bool: true if declared as ?type
 $type->isBuiltin();  // true for int/string/array/...; false for class/interface types
 ```
 
 ### Reading attributes via Reflection
 
-Reflection is **how attributes are consumed** — read metadata off declarations, then instantiate.
+Reflection is how attributes are consumed: read metadata off declarations, then instantiate.
 
 ```php
 $rc = new ReflectionClass(UserController::class);
@@ -243,16 +243,16 @@ foreach ($rc->getAttributes(Route::class) as $attr) { // ReflectionAttribute[]
 $rc->getMethod('index')->getAttributes(Route::class);
 
 // getAttributes(?string $name = null, int $flags = 0);
-//   $name  — filter by attribute class (null = all)
-//   $flags — ReflectionAttribute::IS_INSTANCEOF matches subclasses too
+//   $name  filters by attribute class (null = all)
+//   $flags ReflectionAttribute::IS_INSTANCEOF matches subclasses too
 ```
 
 **Uses:** DI autowiring (read constructor types), ORMs/serializers (map attributes → columns), test frameworks, validators.
 
-**Gotcha:** reflecting an aliased class resolves to the **real** class — `getName()` returns the original FQN, not the alias.
+**Gotcha:** reflecting an aliased class resolves to the real class: `getName()` returns the original FQN, not the alias.
 
 <!-- nav -->
 ---
 
-← [PHP — Security](16-security.md) · [Index](README.md) · [PHP — Advanced (Fibers, Streams, Closures, Serialization)](18-advanced.md) →
+← [PHP: Security](16-security.md) · [Index](README.md) · [PHP: Advanced (Fibers, Streams, Closures, Serialization)](18-advanced.md) →
 <!-- nav -->

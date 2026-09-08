@@ -1,34 +1,27 @@
-# Flutter — State Management
+# Flutter: State Management
 
 *Source: https://docs.flutter.dev/data-and-backend/state-mgmt/intro*
 
-## Ephemeral vs App State
+## Ephemeral vs app state
 
 Two conceptual kinds of state. **Ephemeral** (UI/local) lives in one widget, others rarely need it, no serialization. **App state** is shared across many parts and kept between sessions.
 
-```dart
-// EPHEMERAL — current page in PageView, current tab, animation progress.
-//   Tool: StatefulWidget + setState. Stays inside the widget.
-// APP STATE — user prefs, login info, shopping cart, notifications.
-//   Tool: a state-management solution (e.g. Provider).
-```
+- Ephemeral: current page in a `PageView`, current tab, animation progress. Use a `StatefulWidget` with `setState`; it stays inside the widget.
+- App state: user prefs, login info, shopping cart, notifications. Use a state-management solution such as Provider.
 
-No universal rule — **"do whatever is less awkward."** The line moves as the app grows; refactor freely.
+No universal rule: "do whatever is less awkward." The line moves as the app grows; refactor freely.
 
-## The Declarative Model
+## The declarative model
 
-Flutter is **declarative**: the UI is a function of state — `UI = f(state)`. You don't mutate widgets imperatively; you **rebuild** them with new data.
+Flutter is **declarative**: the UI is a function of state, `UI = f(state)`. You don't mutate widgets imperatively; you rebuild them with new data.
 
-```dart
-// Widgets are IMMUTABLE: "They don't change — they get replaced."
-// To change the screen, call setState() and return a fresh widget tree.
-```
+Widgets are immutable: they don't change, they get replaced. To change the screen, call `setState()` and return a fresh widget tree.
 
-Ephemeral state with `setState` — the current tab of a `BottomNavigationBar`:
+Ephemeral state with `setState`, e.g. the current tab of a `BottomNavigationBar`:
 
 ```dart
 class _MyHomepageState extends State<MyHomepage> {
-  int _index = 0; // local, ephemeral — no one else needs it
+  int _index = 0; // local, ephemeral: no one else needs it
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +37,11 @@ class _MyHomepageState extends State<MyHomepage> {
 }
 ```
 
-## Lifting State Up
+## Lifting state up
 
-When several widgets need the same data, **lift the state up** to a common ancestor and pass it down. For app-wide state this gets awkward (prop drilling) — that's the cue to reach for a state-management solution.
+When several widgets need the same data, lift the state up to a common ancestor and pass it down. For app-wide state this gets awkward (prop drilling), which is the cue to reach for a state-management solution.
 
-Flutter's low-level primitives: **InheritedWidget**, **InheritedNotifier**, **InheritedModel** — propagate data down the tree and let descendants rebuild on change. Higher-level packages (like Provider) wrap these so you rarely touch them directly.
+Flutter's low-level primitives are `InheritedWidget`, `InheritedNotifier`, and `InheritedModel`. They propagate data down the tree and let descendants rebuild on change. Higher-level packages (like Provider) wrap these so you rarely touch them directly.
 
 ## Provider
 
@@ -58,7 +51,7 @@ Recommended starting solution. Wraps `InheritedWidget` with less boilerplate.
 $ flutter pub add provider
 ```
 
-Three concepts: **ChangeNotifier**, **ChangeNotifierProvider**, **Consumer**.
+Three concepts: `ChangeNotifier`, `ChangeNotifierProvider`, and `Consumer`.
 
 ### ChangeNotifier
 
@@ -87,7 +80,7 @@ class CartModel extends ChangeNotifier {
 
 ### ChangeNotifierProvider
 
-Provides a `ChangeNotifier` to descendants. **Auto-disposes** it when removed.
+Provides a `ChangeNotifier` to descendants. Auto-disposes it when removed.
 
 ```dart
 void main() {
@@ -114,7 +107,7 @@ MultiProvider(
 
 ### Consumer
 
-Rebuilds its `builder` when `notifyListeners()` fires. **Must** specify the type. Builder signature is `(context, model, child)`.
+Rebuilds its `builder` when `notifyListeners()` fires. Must specify the type. Builder signature is `(context, model, child)`.
 
 ```dart
 Consumer<CartModel>(
@@ -125,7 +118,7 @@ Consumer<CartModel>(
 ```
 
 ```dart
-// GOTCHA: put Consumer as DEEP as possible — only its subtree rebuilds.
+// GOTCHA: put Consumer as DEEP as possible, since only its subtree rebuilds.
 //   Wrapping a whole screen in Consumer rebuilds everything on every change.
 // `child` arg = a subtree that does NOT depend on the model; built once,
 //   passed back into builder, never rebuilt (optimization):
@@ -135,7 +128,7 @@ Consumer<CartModel>(
 )
 ```
 
-### Reading Without Rebuilding
+### Reading without rebuilding
 
 To call a method without subscribing to rebuilds, use `listen: false`:
 
@@ -157,7 +150,7 @@ context.read<CartModel>().add(item);   // fire-and-forget, no rebuild
 
 ## InheritedWidget (the low-level primitive)
 
-Provider and `Theme.of`/`MediaQuery.of` are built on **`InheritedWidget`** — it propagates data down the tree, and dependents **auto-rebuild** when it changes. Convention: a static `of(context)` using `dependOnInheritedWidgetOfExactType`, plus `updateShouldNotify`.
+Provider and `Theme.of`/`MediaQuery.of` are built on `InheritedWidget`, which propagates data down the tree; dependents auto-rebuild when it changes. Convention: a static `of(context)` using `dependOnInheritedWidgetOfExactType`, plus `updateShouldNotify`.
 
 ```dart
 class FrogColor extends InheritedWidget {
@@ -179,15 +172,15 @@ class FrogColor extends InheritedWidget {
   bool updateShouldNotify(FrogColor oldWidget) => color != oldWidget.color;
 }
 
-// Usage — context MUST be a descendant of FrogColor:
+// Usage: context MUST be a descendant of FrogColor:
 Widget build(BuildContext context) =>
     Text('Frog', style: TextStyle(color: FrogColor.of(context).color));
 ```
 
-**Gotcha:** `.of(context)` asserts if `context` is a *parent* of the InheritedWidget — wrap the consumer in a `Builder` to get a descendant context. Related: `InheritedNotifier` (value is a `Listenable`), `InheritedModel` (subscribe to sub-parts).
+**Gotcha:** `.of(context)` asserts if `context` is a *parent* of the InheritedWidget, so wrap the consumer in a `Builder` to get a descendant context. Related: `InheritedNotifier` (value is a `Listenable`), `InheritedModel` (subscribe to sub-parts).
 
 <!-- nav -->
 ---
 
-← [Flutter — Navigation & Routing](08-navigation.md) · [Index](README.md) · [Flutter — Networking & Async UI](10-networking-async-ui.md) →
+← [Flutter: Navigation & Routing](08-navigation.md) · [Index](README.md) · [Flutter: Networking & Async UI](10-networking-async-ui.md) →
 <!-- nav -->

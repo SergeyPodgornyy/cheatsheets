@@ -1,8 +1,8 @@
-# PHP — SPL (Standard PHP Library)
+# PHP: SPL (Standard PHP Library)
 
 *Source: https://www.php.net/manual/en/book.spl.php*
 
-The **SPL** ships built-in data structures, iterators, and interfaces — concrete classes for stacks, queues, heaps, fixed arrays, and object maps.
+The **SPL** ships built-in data structures, iterators, and interfaces: concrete classes for stacks, queues, heaps, fixed arrays, and object maps.
 
 ## Data structures
 
@@ -46,7 +46,7 @@ $q->enqueue('second');
 echo $q->dequeue(); // 'first'
 ```
 
-### SplHeap (abstract — implement compare())
+### SplHeap (abstract, implement compare())
 
 Abstract; subclass and define `compare()` to set ordering. Top is the "largest" per `compare()`.
 
@@ -70,7 +70,7 @@ echo $h->extract(); // 5 (remove top)
 
 ### SplMaxHeap / SplMinHeap
 
-Concrete heaps — no `compare()` needed.
+Concrete heaps, no `compare()` needed.
 
 ```php
 $max = new SplMaxHeap();
@@ -160,34 +160,34 @@ echo count($st);                 // 1
 Wrap and transform other iterables.
 
 ```php
-// ArrayIterator — iterate an array as an object
+// ArrayIterator: iterate an array as an object
 $it = new ArrayIterator(['a', 'b', 'c']);
 foreach ($it as $v) {
     // 'a', 'b', 'c'
 }
 
-// IteratorIterator — wrap any Traversable as a concrete Iterator
+// IteratorIterator: wrap any Traversable as a concrete Iterator
 $it = new IteratorIterator($someTraversable);
 
-// LimitIterator — slice: offset 0, take 10
+// LimitIterator: slice from offset 0, take 10
 $page = new LimitIterator($it, 0, 10);
 
-// CallbackFilterIterator — filter via callback (FilterIterator is abstract)
+// CallbackFilterIterator: filter via callback (FilterIterator is abstract)
 $even = new CallbackFilterIterator($it, fn($v) => $v % 2 === 0);
 
-// RecursiveArrayIterator + RecursiveIteratorIterator — flatten nested arrays
+// RecursiveArrayIterator + RecursiveIteratorIterator: flatten nested arrays
 $flat = new RecursiveIteratorIterator(new RecursiveArrayIterator($nestedArray));
 foreach ($flat as $leaf) {
     // each leaf value, depth-first
 }
 
-// RecursiveDirectoryIterator — walk a directory tree
+// RecursiveDirectoryIterator: walk a directory tree
 $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('/path'));
 foreach ($files as $file) {
     // each SplFileInfo
 }
 
-// GlobIterator — directory listing by glob pattern
+// GlobIterator: directory listing by glob pattern
 $logs = new GlobIterator('/var/log/*.log');
 ```
 
@@ -201,10 +201,10 @@ iterator_apply($it, fn() => true); // call fn for each element
 
 ## SPL exceptions
 
-Semantic exception types — extend these in your own code. Two trees: **LogicException** (bug at dev time) vs **RuntimeException** (error at run time).
+Semantic exception types, meant to be extended in your own code. Two trees: `LogicException` (bug at dev time) vs `RuntimeException` (error at run time).
 
 ```text
-LogicException                  // programmer mistake — fix the code
+LogicException                  // programmer mistake, fix the code
   ├── BadFunctionCallException
   ├── BadMethodCallException
   ├── DomainException
@@ -229,5 +229,5 @@ throw new InvalidArgumentException('age must be >= 0');
 <!-- nav -->
 ---
 
-← [PHP — Generators & Iteration](14-generators-iteration.md) · [Index](README.md) · [PHP — Security](16-security.md) →
+← [PHP: Generators & Iteration](14-generators-iteration.md) · [Index](README.md) · [PHP: Security](16-security.md) →
 <!-- nav -->

@@ -1,10 +1,10 @@
-# PHP — Types
+# PHP: Types
 
 *Source: https://www.php.net/manual/en/language.types.php*
 
-## The Type System
+## The type system
 
-**Scalar:** `bool`, `int`, `float`, `string`. **Special:** `null`, `array`, `object`, `callable`, `iterable`, `resource`. **Abstract** (only as declarations): `mixed`, `void`, `never`.
+Scalar types: `bool`, `int`, `float`, `string`. Special types: `null`, `array`, `object`, `callable`, `iterable`, `resource`. Abstract types, usable only as declarations: `mixed`, `void`, `never`.
 
 ```php
 $flag  = true;     // bool
@@ -40,42 +40,42 @@ $obj->prop = 'x';
 var_dump($obj instanceof stdClass); // bool(true)
 ```
 
-## Type Juggling / Coercion
+## Type juggling / coercion
 
-PHP **auto-converts** types based on context (mainly arithmetic vs string).
+PHP auto-converts types based on context (mainly arithmetic vs string).
 
 ```php
-$r = "10" + 5;      // int(15)  — numeric string coerced to number
-$c = 10 . "5";      // "105"    — int coerced to string by `.`
+$r = "10" + 5;      // int(15): numeric string coerced to number
+$c = 10 . "5";      // "105": int coerced to string by `.`
 $f = "10.5" + 1;    // float(11.5)
-$x = true + 1;      // int(2)   — true→1, false→0
-$n = null + 5;      // int(5)   — null→0
+$x = true + 1;      // int(2): true→1, false→0
+$n = null + 5;      // int(5): null→0
 
-var_dump("0" == false);  // true  — "0", 0, "", null, [] are falsy
-var_dump(0 == "abc");    // false — non-numeric string NOT cast to 0
-var_dump("1" == "01");   // true  — both numeric, compared as numbers
+var_dump("0" == false);  // true: "0", 0, "", null, [] are falsy
+var_dump(0 == "abc");    // false: non-numeric string NOT cast to 0
+var_dump("1" == "01");   // true: both numeric, compared as numbers
 ```
 
 **Falsy** values: `false`, `0`, `0.0`, `""`, `"0"`, `[]`, `null`. Everything else is truthy (note: `"0.0"` and `"false"` are truthy).
 
-## Type Casts
+## Type casts
 
 Explicit conversion with `(type)`.
 
 ```php
-$n = (int) "123abc";   // 123  — parses leading digits
+$n = (int) "123abc";   // 123: parses leading digits
 $n = (int) "abc";      // 0
-$n = (int) 3.99;       // 3    — truncates, no rounding
+$n = (int) 3.99;       // 3: truncates, no rounding
 $s = (string) 3.14;    // "3.14"
 $b = (bool) "";        // false
-$b = (bool) "0";       // false  — but (bool)"0.0" is true
-$a = (array) "x";      // ["x"]  — scalar wrapped
+$b = (bool) "0";       // false, but (bool)"0.0" is true
+$a = (array) "x";      // ["x"]: scalar wrapped
 $o = (object) ['k'=>1];// stdClass with ->k = 1
 ```
 
-## Type Declarations
+## Type declarations
 
-Enforce types on **parameters**, **return values**, and **properties**.
+Enforce types on parameters, return values, and properties.
 
 ```php
 function add(int $a, int $b): int
@@ -91,7 +91,7 @@ class User
 }
 ```
 
-### Nullable — `?type`
+### Nullable: `?type`
 
 Shorthand for `type|null`.
 
@@ -103,7 +103,7 @@ function find(?string $id): ?User
 // ?string  ==  string|null
 ```
 
-### Union — `A|B`
+### Union: `A|B`
 
 Value may be any one of several types.
 
@@ -118,9 +118,9 @@ function id(): int|string
 }
 ```
 
-### Intersection — `A&B`
+### Intersection: `A&B`
 
-Value must satisfy **all** listed types (object/interface types only).
+Value must satisfy all listed types (object/interface types only).
 
 ```php
 function process(Countable&Traversable $c): void
@@ -147,9 +147,9 @@ function dump(mixed $v): void         // mixed = any type at all
 }
 ```
 
-## Strict vs Coercive Typing
+## Strict vs coercive typing
 
-By default PHP is **coercive**: scalar args are silently coerced to the declared type. Add `declare(strict_types=1)` as the **first statement** of a file to enforce **exact** types (only `int`→`float` widening allowed).
+By default PHP is **coercive**: scalar args are silently coerced to the declared type. Add `declare(strict_types=1)` as the first statement of a file to enforce exact types (only `int`→`float` widening allowed).
 
 ```php
 declare(strict_types=1);   // must be the very first statement
@@ -159,13 +159,13 @@ function square(int $n): int
     return $n * $n;
 }
 
-square(4);     // 16 — OK
+square(4);     // 16, OK
 square("4");   // TypeError in strict mode
                // → coerced to int(4) → 16 in default (coercive) mode
-square(4.0);   // TypeError in strict — float not int (no auto-narrowing)
+square(4.0);   // TypeError in strict: float not int (no auto-narrowing)
 ```
 
-## Numeric Strings
+## Numeric strings
 
 Strings that look like numbers behave as numbers in arithmetic / numeric comparison.
 
@@ -175,12 +175,12 @@ var_dump(is_numeric("1.5e3"));  // true (scientific notation)
 var_dump(is_numeric("0x1A"));   // false (hex strings not numeric)
 var_dump(is_numeric("12abc"));  // false
 
-echo "1.5e3" + 0;   // 1500 — treated as float
-echo "  42" + 0;    // 42   — leading whitespace allowed
+echo "1.5e3" + 0;   // 1500: treated as float
+echo "  42" + 0;    // 42: leading whitespace allowed
 ```
 
 <!-- nav -->
 ---
 
-← [PHP — Basics](01-basics.md) · [Index](README.md) · [PHP — Operators](03-operators.md) →
+← [PHP: Basics](01-basics.md) · [Index](README.md) · [PHP: Operators](03-operators.md) →
 <!-- nav -->

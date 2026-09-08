@@ -1,4 +1,4 @@
-# Python — OOP
+# Python: OOP
 
 ## Classes and self
 
@@ -353,5 +353,5 @@ Reference: https://stackoverflow.com/a/27466499/5004569
 <!-- nav -->
 ---
 
-← [Python — AsyncIO](09-async.md) · [Index](README.md) · [Python — Exceptions](11-exceptions.md) →
+← [Python: AsyncIO](09-async.md) · [Index](README.md) · [Python: Exceptions](11-exceptions.md) →
 <!-- nav -->

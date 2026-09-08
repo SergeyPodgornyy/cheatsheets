@@ -1,4 +1,4 @@
-# Python — Functions
+# Python: Functions
 
 ## Scope
 
@@ -53,7 +53,7 @@ greet(name='Mario', lang='it', default='Ciao')
 greet('Mykola', lang='ua')
 ```
 
-## Lambda (Anonymous functions)
+## Lambda (anonymous functions)
 
 Lambdas are just nameless functions that you can create and use on a spot. To create a lambda, we need to use the `lambda` keyword, followed by the parameters that we want this lambda to use.
 
@@ -202,10 +202,9 @@ Every single function that does not return something, does implicitly return `No
 | `locals()` | returns everything visible in the local scope |
 | `eval()` | evaluate the string expression as a code and return the result: `eval('1 + 2 + 10')`. Anything that is not an expression won't work: `eval('x = 10')` → SyntaxError |
 | `exec()` | executes the string expression as a code, thus extremely dangerous |
-```
 
 <!-- nav -->
 ---
 
-← [Python — Comprehension and Unpacking](04-comprehension.md) · [Index](README.md) · [Python — Modules / Packages / Libraries](06-modules.md) →
+← [Python: Comprehension and Unpacking](04-comprehension.md) · [Index](README.md) · [Python: Modules / Packages / Libraries](06-modules.md) →
 <!-- nav -->

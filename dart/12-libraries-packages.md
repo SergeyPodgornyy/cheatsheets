@@ -1,4 +1,4 @@
-# Dart — Libraries & Packages
+# Dart: Libraries & Packages
 
 *Source: https://dart.dev/language/libraries*
 
@@ -50,7 +50,7 @@ Future<void> greet() async {
 
 ### Library privacy
 
-Dart has **no** `public`/`private`/`protected` keywords. An identifier with a leading underscore `_` is **library-private**.
+Dart has no `public`/`private`/`protected` keywords. An identifier with a leading underscore `_` is **library-private**.
 
 ```dart
 int _counter = 0;            // private to its library (file)
@@ -92,7 +92,7 @@ dev_dependencies:
 | `name` | required; lowercase + underscores `[a-z0-9_]`, a valid Dart identifier |
 | `version` | three dot-separated numbers, optional `+build` / `-prerelease` (semver) |
 | `description` | required to publish; ~60-180 chars of plain text |
-| `environment` | SDK constraint **required** — omitting it fails `dart pub get` |
+| `environment` | SDK constraint, required; omitting it fails `dart pub get` |
 | `dependencies` | runtime dependencies |
 | `dev_dependencies` | dependencies only needed during development (tests, lints) |
 | `dependency_overrides` | temporarily force a specific version (don't publish with these) |
@@ -131,7 +131,7 @@ $ dart pub get      # non-Flutter package
 $ flutter pub get   # Flutter package
 ```
 
-## dart:convert — JSON
+## JSON with dart:convert
 
 ```dart
 import 'dart:convert';
@@ -190,5 +190,5 @@ var lines = utf8.decoder.bind(inputStream).transform(const LineSplitter());
 <!-- nav -->
 ---
 
-← [Dart — Async (Future, Stream, Isolate)](11-async.md) · [Index](README.md) · [Dart — Tooling, Metadata & Docs](13-misc.md) →
+← [Dart: Async (Future, Stream, Isolate)](11-async.md) · [Index](README.md) · [Dart: Tooling, Metadata & Docs](13-misc.md) →
 <!-- nav -->
